@@ -1,2 +1,2 @@
 # 9105group
-// this is our group project
+// This is our group project
