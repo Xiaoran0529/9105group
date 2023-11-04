@@ -55,6 +55,18 @@ function keyPressed() {
     }
   }
 }
+// Listen for key press events
+function keyPressed() {
+  // If the Enter or Return key is pressed (keyCode 13)
+  if (keyCode === ENTER || keyCode === RETURN) {
+    // Iterate over all elements
+    for (let i = 0; i < elementList.length; i++) {
+      // Assign a new random width and height to each element
+      elementList[i].width = random(20, 100);
+      elementList[i].height = random(20, 100);
+    }
+  }
+}
 class element {
   constructor(x, y, width, height, color) {
     this.x = x;
