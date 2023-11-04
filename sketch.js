@@ -455,3 +455,9 @@ function creatElements() {
   //grey,row 5, column 3
   elementList.push(new element(130/ 800 * size, 650/ 800 * size, 30 / 800 * size, 20 / 800 * size, "#D5D5D0"));
 }
+ function windowResized() {
+        resizeCanvas(windowWidth, windowHeight);
+        size = windowWidth < windowHeight ? windowWidth : windowHeight;
+        elementList = [];
+        creatElements();
+    }
