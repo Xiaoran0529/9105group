@@ -1,5 +1,10 @@
 let elementList = [];
 let size;
+let song;
+let fft;
+function preload() {
+  song = loadSound("assets/Bossa.mp3");
+  }
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
