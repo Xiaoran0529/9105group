@@ -37,6 +37,24 @@ function mousePressed() {
   elementList.push(newElement);
 }
  
+function keyPressed() {
+  // Define colors corresponding to keys 1 to 5
+  const keyToColor = {
+    '1': "#E8D135", // Yellow
+    '2': "#4468BC", // Blue
+    '3': "#C32F27", // Red
+    '4': "#2F8C2C", // Green
+    '5': "#8A2F8C"  // Purple
+  };
+
+  // Check if the key is in the keyToColor mapping
+  if (key in keyToColor) {
+    // Change the color of all elements to the selected color
+    for (let i = 0; i < elementList.length; i++) {
+      elementList[i].color = keyToColor[key];
+    }
+  }
+}
 class element {
   constructor(x, y, width, height, color) {
     this.x = x;
