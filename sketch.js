@@ -22,6 +22,14 @@ function draw() {
 
 }
 
+function mousePressed() {
+  // Create a new element with random width and height
+   const newWidth = random(20, 100);
+   const newHeight = random(20, 100);
+   const newElement = new element(mouseX, mouseY, newWidth, newHeight, "#E8D135");
+   elementList.push(newElement);
+ }
+ 
 class element {
   constructor(x, y, width, height, color) {
     this.x = x;
