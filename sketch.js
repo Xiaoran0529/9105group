@@ -21,14 +21,21 @@ function draw() {
   }
 
 }
+// Color array to cycle through
+let colorIndex = 0;
+const colors = ["#E8D135", "#4468BC", "#C32F27", "#2F8C2C", "#8A2F8C"];
 
 function mousePressed() {
-  // Create a new element with random width and height
-   const newWidth = random(20, 100);
-   const newHeight = random(20, 100);
-   const newElement = new element(mouseX, mouseY, newWidth, newHeight, "#E8D135");
-   elementList.push(newElement);
- }
+  // Cycle to the next color
+  colorIndex = (colorIndex + 1) % colors.length;
+  
+  // Create a new element with a random width and height at the mouse position
+  const newWidth = random(20, 100);
+  const newHeight = random(20, 100);
+  // Use the current color from the array
+  const newElement = new element(mouseX, mouseY, newWidth, newHeight, colors[colorIndex]);
+  elementList.push(newElement);
+}
  
 class element {
   constructor(x, y, width, height, color) {
