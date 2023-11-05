@@ -6,6 +6,7 @@ let fft;
 
 function preload() {
   song = loadSound("assets/Bossa.mp3");
+  img = loadImage("assets/bg.jpg")
   }
 
 function setup() {
@@ -21,6 +22,7 @@ function setup() {
 
 function draw() {
   background(255);
+  image(img,0,0,size, size)
   push();
   noFill();
   rect(0, 0, size, size);
@@ -33,7 +35,7 @@ function draw() {
     movingElementList[j].display();
   }
   pop();
-
+  
   
 }
 
