@@ -3,13 +3,13 @@ let size;
 let song;
 let fft;
 
+
 function preload() {
   song = loadSound("assets/Bossa.mp3");
   img = loadImage("assets/bg.jpg")
   }
 
 function setup() {
-  colorMode(RGB);
   createCanvas(windowWidth, windowHeight);
   size = windowWidth < windowHeight ? windowWidth : windowHeight;
 
@@ -26,17 +26,14 @@ function draw() {
   noFill();
   rect(0, 0, size, size);
   noStroke();
-
   for (let i = 0; i < elementList.length; i++) {
     elementList[i].display();
   }
   pop();
    
+  let vol = amp.getLevel() * 1000 ;
   
-  let vol = amp.getLevel() * 2000 ;
-  let vol_2 = amp.getLevel() * 2500 ;
   console.log(vol);
-  
   let wave = fft.waveform();
   console.log(wave)
   let spectrum = fft.analyze()
@@ -44,11 +41,10 @@ function draw() {
 
   push();
   noStroke();
-  fill("#E8D135")
+  fill((232 + vol/5) ,(209 - vol/5),53)
   
 //Window width horizontal yellow strips
 for (let o = 0; o < spectrum.length; o++){
-
 
 let horizontalStrip = [18 / 800 * size,122 / 800 * size, 277 / 800 * size, 343 / 800 * size, 447 / 800 * size, 500 / 800 * size,680 / 800 * size, 755 / 800 * size];
 
@@ -58,7 +54,7 @@ for (let a = 0; a < horizontalStrip.length; a++) {
 }
 
 //Window height vertical yellow strips
-let verticalStrip = [45 / 800 * size, 178 / 800 * size, 429 / 800 * size, 462 / 800 * size, 672 / 800 * size,768 / 800 * size]
+let verticalStrip = [45 / 800 * size, 92 / 800 * size,178 / 800 * size, 429 / 800 * size, 462 / 800 * size, 672 / 800 * size,768 / 800 * size]
 for (let b = 0; b < verticalStrip.length; b++) {
   let h = map(spectrum[b], 0, 255, 0, size);
   rect(verticalStrip[b], size, 16 / 800 * size, -h)
@@ -67,9 +63,8 @@ for (let b = 0; b < verticalStrip.length; b++) {
 }
   pop();
 
-
   push();
-  fill(10,0,50 + vol * 0.5);
+  fill(10,20,60 + vol);
   for (let v = 0; v < 6; v++) {
     
     let cube_x = [45 / 800 * size, 92 / 800 * size,178 / 800 * size, 429 / 800 * size, 462 / 800 * size, 672 / 800 * size,768 / 800 * size] 
@@ -81,16 +76,28 @@ for (let b = 0; b < verticalStrip.length; b++) {
     pop();
 
     push();
-    fill(50 + vol_2 * 0.5,0,20);
+    fill(50 + vol,10,10);
     for (let n = 0; n < 6; n++) {
     let cube_y = [18 / 800 * size, 122 / 800 * size, 277 / 800 * size, 343 / 800 * size, 447 / 800 * size, 500 / 800 * size,680 / 800 * size, 755 / 800 * size];
     for (let m = 0; m < cube_y.length; m++){
-      rect(vol_2, cube_y[m],20 / 800 * size,20 / 800 * size)
+      rect(vol, cube_y[m],20 / 800 * size,20 / 800 * size)
      }
     }
     pop();
 
-
+   push();
+   
+    for (let g = 0; g < 10; g++){
+      let index = floor(map(g, 0, 8, 0, wave.length - 1))
+      let x = map(wave[index], -1, 1, 0, size)
+      fill(random(x),80, random(x))
+      let cube_y = [122 / 800 * size, 277 / 800 * size, 343 / 800 * size, 447 / 800 * size, 500 / 800 * size];
+      rect(x, cube_y[g], 20 / 800 * size,20 / 800 * size)
+      let cube_x = [672 / 800 * size,768 / 800 * size]
+      rect(cube_x[g], x, 16 / 800 * size, 20 / 800 * size)
+    }
+   pop();
+   
 }
 
 class element {
@@ -106,15 +113,17 @@ class element {
     fill(this.color);
     rect(this.x, this.y, this.width, this.height);
   }
+
 }
+
 
 
 
 function creatElements() {
   
-  let list_x = [18 / 800 * size, 92 / 800 * size, 702 / 800 * size, 740 / 800 * size, 740 / 800 * size, 740 / 800 * size];
-  let list_y = [0, 0, 0, 0, 123 / 800 * size, 500 / 800 * size];
-  let list_h = [278 / 800 * size, 770 / 800 * size, 297 / 800 * size, 81 / 800 * size, 236 / 800 * size, 155 / 800 * size];
+  let list_x = [18 / 800 * size, 702 / 800 * size, 740 / 800 * size, 740 / 800 * size, 740 / 800 * size];
+  let list_y = [0, 0, 0, 123 / 800 * size, 500 / 800 * size];
+  let list_h = [278 / 800 * size, 297 / 800 * size, 81 / 800 * size, 236 / 800 * size, 155 / 800 * size];
   for (let k = 0; k < list_y.length; k++) {
     elementList.push(new element(list_x[k], list_y[k], 16, list_h[k], "#E8D135"))
   }
@@ -130,23 +139,16 @@ function creatElements() {
  
 
   // red rect column4
-  let column4_x = [122 / 800 * size, 92 / 800 * size, 122 / 800 * size, 122 / 800 * size, 160 / 800 * size, 92 / 800 * size, 108 / 800 * size, 124 / 800 * size, 108 / 800 * size, 108 / 800 * size, 108 / 800 * size, 124 / 800 * size, 124 / 800 * size];
-  let column4_y = [33 / 800 * size, 48 / 800 * size, 33 / 800 * size, 90 / 800 * size, 122 / 800 * size, 210 / 800 * size, 278 / 800 * size, 278 / 800 * size, 395 / 800 * size, 580 / 800 * size, 630 / 800 * size, 680 / 800 * size, 755 / 800 * size];
-  let column4_w = [32 / 800 * size, 86 / 800 * size, 32 / 800 * size, 32 / 800 * size, 16 / 800 * size, 86 / 800 * size, 16 / 800 * size, 37 / 800 * size, 70 / 800 * size, 70 / 800 * size, 70 / 800 * size, 20 / 800 * size, 20 / 800 * size];
-  let column4_h = [35 / 800 * size, 22 / 800 * size, 35 / 800 * size, 33 / 800 * size, 20 / 800 * size, 50 / 800 * size, 20 / 800 * size, 76 / 800 * size, 51 / 800 * size, 16 / 800 * size, 51 / 800 * size, 20 / 800 * size, 20 / 800 * size];
+  let column4_x = [122 / 800 * size, 92 / 800 * size, 122 / 800 * size, 122 / 800 * size,92 / 800 * size, 108 / 800 * size, 124 / 800 * size, 108 / 800 * size, 108 / 800 * size, 108 / 800 * size, 124 / 800 * size];
+  let column4_y = [33 / 800 * size, 48 / 800 * size, 33 / 800 * size, 90 / 800 * size, 210 / 800 * size, 278 / 800 * size, 278 / 800 * size, 395 / 800 * size, 580 / 800 * size, 630 / 800 * size];
+  let column4_w = [32 / 800 * size, 86 / 800 * size, 32 / 800 * size, 32 / 800 * size, 86 / 800 * size, 16 / 800 * size, 37 / 800 * size, 70 / 800 * size, 70 / 800 * size, 70 / 800 * size];
+  let column4_h = [35 / 800 * size, 22 / 800 * size, 35 / 800 * size, 33 / 800 * size, 50 / 800 * size, 20 / 800 * size, 76 / 800 * size, 51 / 800 * size, 16 / 800 * size, 51 / 800 * size];
   let column4_col = ["#A7392C", "#E8D135", "#A7392C", "#A7392C", "#A7392C", "#E8D135", "#A7392C", "#E8D135", "#A7392C", "#E8D135", "#E8D135", "#A7392C", "#A7392C"];
   for (let o = 0; o < column4_y.length; o++) {
     elementList.push(new element(column4_x[o], column4_y[o], column4_w[o], column4_h[o], column4_col[o]))
   }
-  
  
-  // red rect column8
-  let column8_x = [516 / 800 * size, 593 / 800 * size, 500 / 800 * size, 519 / 800 * size, 519 / 800 * size];
-  let column8_y = [278 / 800 * size, 278 / 800 * size, 344 / 800 * size, 447 / 800 * size, 481 / 800 * size]
 
-  for (let g = 0; g < column8_x.length; g++) {
-    elementList.push(new element(column8_x[g], column8_y[g], 22 / 800 * size, 20 / 800 * size, "#A7392C"))
-  }
   let column_8_x = [525 / 800 * size, 542 / 800 * size, 558 / 800 * size, 519 / 800 * size, 558 / 800 * size];
   let column_8_y = [182 / 800 * size, 208 / 800 * size, 363 / 800 * size, 344 / 800 * size, 467 / 800 * size];
   let column_8_w = [70 / 800 * size, 38 / 800 * size, 69 / 800 * size, 22 / 800 * size, 69 / 800 * size];
@@ -159,10 +161,10 @@ function creatElements() {
 
 
   // red rect row10
-  let row10_x = [702 / 800 * size, 689 / 800 * size, 687 / 800 * size, 687 / 800 * size, 722 / 800 * size, 720 / 800 * size,325 / 800 * size];
-  let row10_y = [164 / 800 * size, 603 / 800 * size, 639 / 800 * size, 387 / 800 * size, 387 / 800 * size, 755 / 800 * size,290 / 800 * size];
-  let row10_w = [ 54 / 800 * size, 51 / 800 * size, 93 / 800 * size, 93 / 800 * size, 16 / 800 * size, 16 / 800 * size,56 / 800 * size];
-  let row10_h = [ 47 / 800 * size, 36 / 800 * size, 16 / 800 * size, 39 / 800 * size, 39 / 800 * size, 20 / 800 * size, 170 / 800 * size];
+  let row10_x = [702 / 800 * size, 689 / 800 * size, 687 / 800 * size, 687 / 800 * size, 722 / 800 * size, 325 / 800 * size];
+  let row10_y = [164 / 800 * size, 603 / 800 * size, 639 / 800 * size, 387 / 800 * size, 387 / 800 * size, 290 / 800 * size];
+  let row10_w = [ 54 / 800 * size, 51 / 800 * size, 93 / 800 * size, 93 / 800 * size, 16 / 800 * size,56 / 800 * size];
+  let row10_h = [ 47 / 800 * size, 36 / 800 * size, 16 / 800 * size, 39 / 800 * size, 39 / 800 * size,  170 / 800 * size];
   let row10_col = ["#A7392C", "#A7392C", "#E8D135", "#E8D135", "#A7392C", "#A7392C","#E8D135" ];
   for (let r = 0; r < row10_y.length; r++) {
     elementList.push(new element(row10_x[r], row10_y[r], row10_w[r], row10_h[r], row10_col[r]))
