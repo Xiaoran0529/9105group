@@ -1,6 +1,8 @@
 let elementList = [];
 let size;
-
+let yoff = 0.0; // 2nd dimension of perlin noise
+let yh=900;
+let xh=1300
 function setup() {
   createCanvas(windowWidth, windowHeight);
   size = windowWidth < windowHeight ? windowWidth : windowHeight;
@@ -21,6 +23,8 @@ function draw() {
   for (let i = 0; i < elementList.length; i++) {
     elementList[i].display();
   }
+  yh -=0.3;
+  xh -=0.3;
 }
 
 function drawBackground() {
@@ -29,8 +33,8 @@ function drawBackground() {
   beginShape();
   let xoff = 0;
 
-  for (let x = 0; x <= width; x += 10) {
-    let y = map(noise(xoff, yoff), 0, 1, 600, 200); // 修改这里来适应你的背景
+  for (let x = 0; x <= windowWidth; x += 10) {
+    let y = map(noise(xoff, yoff), 0, 3, xh, yh); // 修改这里来适应你的背景
     vertex(x, y);
     xoff += 0.05;
   }
@@ -429,4 +433,3 @@ function createElements() {
   //grey,row 5, column 3
   elementList.push(new element(130 / 800 * size, 650 / 800 * size, 30 / 800 * size, 20 / 800 * size, "#D5D5D0"));
 }
-let yoff = 0.0; // 2nd dimension of perlin noise
