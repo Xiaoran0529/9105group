@@ -3,6 +3,8 @@ let movingElementList= [];
 let size;
 let song;
 let fft;
+let vol;
+
 
 function preload() {
   song = loadSound("assets/Bossa.mp3");
@@ -23,6 +25,7 @@ function setup() {
 function draw() {
   background(255);
   image(img,0,0,size, size)
+  
   push();
   noFill();
   rect(0, 0, size, size);
@@ -31,11 +34,40 @@ function draw() {
   for (let i = 0; i < elementList.length; i++) {
     elementList[i].display();
   }
-  for (let j = 0; j < movingElementList.length; j++) {
-    movingElementList[j].display();
-  }
   pop();
+   
   
+  let vol = amp.getLevel() * 2000 ;
+  let vol_2 = amp.getLevel() * 2500 ;
+  console.log(vol);
+  
+  let wave = fft.waveform();
+  console.log(wave)
+  let spectrum = fft.analyze()
+  console.log(spectrum)
+  push();
+
+  fill(0,0,70 + vol * 0.5);
+  for (let v = 0; v < 6; v++) {
+    
+    let cube_x = [45 / 800 * size, 92 / 800 * size,178 / 800 * size, 429 / 800 * size, 462 / 800 * size, 672 / 800 * size,768 / 800 * size] 
+    let cubeSpacing = 30;
+    
+    for (let z = 0; z < cube_x.length; z++){
+      rect(cube_x[z], vol , 16 / 800 * size, 20 / 800 * size)
+    }
+    
+    
+    }
+    pop();
+    fill(70 + vol_2 * 0.5,0,0);
+    for (let n = 0; n < 6; n++) {
+    let cube_y = [18 / 800 * size, 122 / 800 * size, 277 / 800 * size, 343 / 800 * size, 447 / 800 * size, 500 / 800 * size,680 / 800 * size, 755 / 800 * size];
+    for (let m = 0; m < cube_y.length; m++){
+      rect(vol_2, cube_y[m],20 / 800 * size,20 / 800 * size)
+     }
+    }
+
   
 }
 
@@ -68,6 +100,11 @@ class element {
   }
 }
 
+function createMovingElements () {
+  
+
+
+}
 
 function creatElements() {
 
@@ -156,26 +193,14 @@ elementList.push(new element(558/ 800 * size, 483/ 800 * size, 69 / 800 * size, 
 }
 
 
-function createMovingElements () {
-  let cube_x = [45 / 800 * size, 92 / 800 * size,178 / 800 * size, 429 / 800 * size, 462 / 800 * size, 672 / 800 * size,768 / 800 * size] 
-  let cubeSpacing = 30;
-  const c = color(random(200),100,150);
-  for (let z = 0; z < cube_x.length; z++){
-    movingElementList.push(new movingElement(cube_x[z],  random(size) + cubeSpacing ,16 / 800 * size,20 / 800 * size, c))
-  }
-  
-  let cube_y = [18 / 800 * size, 122 / 800 * size, 277 / 800 * size, 343 / 800 * size, 447 / 800 * size, 500 / 800 * size,680 / 800 * size, 755 / 800 * size];
-  for (let v = 0; v < cube_y.length; v++){
-    movingElementList.push(new movingElement(random(size) + cubeSpacing, cube_y[v],20 / 800 * size,20 / 800 * size, c))
-   }
-
-}
 
 function mouseClicked(){
   if (song.isPlaying()) {
     song.pause()
+    noLoop()
   } else {
     song.play()
+    loop()
   }
 }
 
