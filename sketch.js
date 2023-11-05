@@ -22,18 +22,88 @@ function draw() {
   drawBackground();
   // draw smoke;
   smoke();
+  smoke2()
+  smoke3()
   // draw elements
   for (let i = 0; i < elementList.length; i++) {
     elementList[i].display();
   }
   //change xh and yh every frame to make it an animation 
-  yh -=0.5;
-  xh -=0.5;
+  yh -=1;
+  xh -=1;
+}
+
+function smoke() {
+  let noiseLevel = 255;
+  let noiseScale = 0.009;
+  let radius = 5;
+  for (let y = 270; y < 550; y += 10) {
+    for (let x = 355; x < 820; x += 10) {
+      // Scale input coordinates.
+      let nx = noiseScale*x;
+      let ny = noiseScale*y;
+      // Compute noise value.
+      let c = noiseLevel * noise(nx, ny);
+      // Render.
+      stroke(c);
+      point(x, y);
+      stroke(225, 225, 0);
+      let circleX=x;
+      let circleY=y;
+      noFill();
+      ellipse(circleX,circleY,radius*5,radius*5)
+    } 
+  }
+}
+function smoke2() {
+  let noiseLevel = 255;
+  let noiseScale = 0.009;
+  let radius = 3;
+  for (let y = 70; y < 230; y += 10) {
+    for (let x = 900; x < 1270; x += 10) {
+      // Scale input coordinates.
+      let nx = noiseScale*x;
+      let ny = noiseScale*y;
+      // Compute noise value.
+      let c = noiseLevel * noise(nx, ny);
+      // Render.
+      stroke(c);
+      point(x, y);
+      stroke(225, 0, 255);
+      let circleX=x;
+      let circleY=y;
+      noFill();
+      ellipse(circleX,circleY,radius*5,radius*5)
+    } 
+  }
+}
+
+function smoke3() {
+  let noiseLevel = 255;
+  let noiseScale = 0.009;
+  let radius = 7;
+  for (let y = 970; y < 1300; y += 10) {
+    for (let x = 900; x < 1280; x += 10) {
+      // Scale input coordinates.
+      let nx = noiseScale*x;
+      let ny = noiseScale*y;
+      // Compute noise value.
+      let c = noiseLevel * noise(nx, ny);
+      // Render.
+      stroke(c);
+      point(x, y);
+      stroke(255, 255, 255);
+      let circleX=x;
+      let circleY=y;
+      noFill();
+      ellipse(circleX,circleY,radius*5,radius*5)
+    } 
+  }
 }
 
 function drawBackground() {
   background(51);
-  fill(0, 250, 255);
+  fill(0, 230, 255);
   //draw a polygon out of the wave points
   beginShape();
   let xoff = 0;
@@ -53,7 +123,6 @@ function drawBackground() {
   vertex(0, height);
   endShape(CLOSE);
 }
-
 
 
 class element {
@@ -442,23 +511,6 @@ function createElements() {
   //grey,row 5, column 3
   elementList.push(new element(128 / 800 * size, 310 / 800 * size, 30 / 800 * size, 20 / 800 * size, "#D5D5D0"));
   //grey,row 5, column 3
-  elementList.push(new element(130 / 800 * size, 650 / 800 * size, 30 / 800 * size, 20 / 800 * size, "#D5D5D0"));
+  elementList.push(new element(130 / 800 * size, 650 / 800 * size, 30 / 800 * size, 20 / 800 * size, "#D5D5D0")); 
 }
 
-function smoke() {
-  let noiseLevel = 255;
-  let noiseScale = 0.009;
-  for (let y = 0; y < 150; y += 1) {
-    for (let x = 0; x < 100; x += 1) {
-      // Scale input coordinates.
-      let nx = noiseScale*x;
-      let ny = noiseScale*y;
-      let nt = noiseScale * frameCount;
-      // Compute noise value.
-      let c = noiseLevel * noise(nx, ny, nt);
-      // Render.
-      stroke(c);
-      point(x, y);
-    }
-  }
-}
