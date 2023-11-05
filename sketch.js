@@ -17,13 +17,16 @@ function draw() {
   noFill();
   rect(0,0,size,size);
   noStroke();
-
-  // draw background
+  
+  // draw wave;
   drawBackground();
+  // draw smoke;
+  smoke();
   // draw elements
   for (let i = 0; i < elementList.length; i++) {
     elementList[i].display();
   }
+  //change xh and yh every frame to make it an animation 
   yh -=0.5;
   xh -=0.5;
 }
@@ -50,6 +53,8 @@ function drawBackground() {
   vertex(0, height);
   endShape(CLOSE);
 }
+
+
 
 class element {
   constructor(x, y, width, height, color) {
@@ -438,4 +443,22 @@ function createElements() {
   elementList.push(new element(128 / 800 * size, 310 / 800 * size, 30 / 800 * size, 20 / 800 * size, "#D5D5D0"));
   //grey,row 5, column 3
   elementList.push(new element(130 / 800 * size, 650 / 800 * size, 30 / 800 * size, 20 / 800 * size, "#D5D5D0"));
+}
+
+function smoke() {
+  let noiseLevel = 255;
+  let noiseScale = 0.009;
+  for (let y = 0; y < 150; y += 1) {
+    for (let x = 0; x < 100; x += 1) {
+      // Scale input coordinates.
+      let nx = noiseScale*x;
+      let ny = noiseScale*y;
+      let nt = noiseScale * frameCount;
+      // Compute noise value.
+      let c = noiseLevel * noise(nx, ny, nt);
+      // Render.
+      stroke(c);
+      point(x, y);
+    }
+  }
 }
