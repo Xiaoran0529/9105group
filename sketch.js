@@ -2,8 +2,8 @@ let elementList = [];
 let size;
 // 2nd dimension of perlin noise
 let yoff = 0.0;
-let yh=900;
-let xh=1300;
+let yh = 900;
+let xh = 1300;
 let interactiveNoise;
 let smokeVisible = true;
 function setup() {
@@ -16,133 +16,140 @@ function draw() {
   background(225);
   stroke(0);
   noFill();
-  rect(0,0,size,size);
-  noStroke();  
+  rect(0, 0, size, size);
+  noStroke();
   // draw wave;
   drawBackground();
   // draw smoke;
-  if (smokeVisible){
+  if (smokeVisible) {
     smoke();
     smoke2();
     smoke3();
     smoke4();
   }
-    
-  
-  
+
+
+
   // draw elements
   for (let i = 0; i < elementList.length; i++) {
     elementList[i].display();
   }
   //change xh and yh every frame to make it an animation 
-  yh -=1;
-  xh -=1;
-  if (mouseIsPressed){
-    smokeVisible =! smokeVisible;
+  yh -= 1;
+  xh -= 1;
+  if (mouseIsPressed) {
+    smokeVisible = !smokeVisible;
   }
 }
 
+class smokeStatus {
+  constructor(x, y, noiseLevel, noiseScale, radius) {
+    this.x = x;
+    this.y = y;
+    this.noiseLevel = noiseLevel;
+    this.noiseScale = noiseScale
+    this.radius = radius;
+  }
+
+}
+
 function smoke() {
-  let noiseLevel = 300;
-  let noiseScale = 1;
-  let radius = 5;
-  for (let y = 270; y < 550; y += 10) {
-    for (let x = 355; x < 820; x += 10) {
+  let mySmoke = new smokeStatus(355, 270, 300, 1, 5);
+  for (let y = mySmoke.y; y < 550; y += 10) {
+    for (let x = mySmoke.x; x < 820; x += 10) {
       // Scale input coordinates.
-      let nx = noiseScale*x;
-      let ny = noiseScale*y;
+      let nx = mySmoke.noiseScale * x;
+      let ny = mySmoke.noiseScale * y;
       // Compute noise value.
-      let nt = noiseScale * frameCount;
+      let nt = mySmoke.noiseScale * frameCount;
       // Compute noise value.
-      let c = noiseLevel * noise(nx, ny, nt);
+      let c = mySmoke.noiseLevel * noise(nx, ny, nt);
       // Render.
       stroke(c);
       point(x, y);
       stroke(225, c, 0);
-      let circleX=x;
-      let circleY=y;
+      let circleX = x;
+      let circleY = y;
       noFill();
-      ellipse(circleX,circleY,radius*5,radius*5)
-    } 
+      ellipse(circleX, circleY, mySmoke.radius * 5, mySmoke.radius * 5)
+    }
   }
 }
 function smoke2() {
-  let noiseLevel = 1000;
-  let noiseScale = 5;
-  let radius = 3;
-  for (let y = 70; y < 230; y += 10) {
-    for (let x = 900; x < 1270; x += 10) {
+  let mySmoke2 = new smokeStatus(900, 70, 1000, 5, 3);
+  for (let y = mySmoke2.y; y < 230; y += 10) {
+    for (let x = mySmoke2.x; x < 1270; x += 10) {
       // Scale input coordinates.
-      let nx = noiseScale*x;
-      let ny = noiseScale*y;
-      let nt = noiseScale * frameCount;
+      let nx = mySmoke2.noiseScale * x;
+      let ny = mySmoke2.noiseScale * y;
       // Compute noise value.
-      let c = noiseLevel * noise(nx, ny, nt);
+      let nt = mySmoke2.noiseScale * frameCount;
+      // Compute noise value.
+      let c = mySmoke2.noiseLevel * noise(nx, ny, nt);
       // Render.
       stroke(c);
       point(x, y);
-      stroke(100, c,100);
-      let circleX=x;
-      let circleY=y;
+      stroke(100, c, 100);
+      let circleX = x;
+      let circleY = y;
       noFill();
-      ellipse(circleX,circleY,radius*5,radius*5)
-    } 
+      ellipse(circleX, circleY, mySmoke2.radius * 5, mySmoke2.radius * 5)
+    }
   }
 }
 
 function smoke3() {
-  let noiseLevel = 255;
-  let noiseScale = 0.3;
-  let radius = 7;
-  for (let y = 970; y < 1300; y += 10) {
-    for (let x = 900; x < 1280; x += 10) {
+  let mySmoke2 = new smokeStatus(900, 970, 255, 0.3, 7);
+  for (let y = mySmoke2.y; y < 1300; y += 10) {
+    for (let x = mySmoke2.x; x < 1280; x += 10) {
       // Scale input coordinates.
-      let nx = noiseScale*x;
-      let ny = noiseScale*y;
-      let nt = noiseScale * frameCount;
+      let nx = mySmoke2.noiseScale * x;
+      let ny = mySmoke2.noiseScale * y;
       // Compute noise value.
-      let c = noiseLevel * noise(nx, ny, nt);
+      let nt = mySmoke2.noiseScale * frameCount;
+      // Compute noise value.
+      let c = mySmoke2.noiseLevel * noise(nx, ny, nt);
       // Render.
       stroke(c);
       point(x, y);
       stroke(c, 0, 255);
-      let circleX=x;
-      let circleY=y;
+      let circleX = x;
+      let circleY = y;
       noFill();
-      ellipse(circleX,circleY,radius*5,radius*5)
-    } 
+      ellipse(circleX, circleY, mySmoke2.radius * 5, mySmoke2.radius * 5)
+    }
   }
 }
+
 function smoke4() {
-  let noiseLevel = 255;
-  let noiseScale = 0.3;
-  let radius = 7;
-  for (let y = 870; y < 1300; y += 10) {
-    for (let x = 350; x < 800; x += 10) {
+  let mySmoke2 = new smokeStatus(350, 870, 255, 0.3, 7);
+  for (let y = mySmoke2.y; y < 1300; y += 10) {
+    for (let x = mySmoke2.x; x < 800; x += 10) {
       // Scale input coordinates.
-      let nx = noiseScale*x;
-      let ny = noiseScale*y;
-      let nt = noiseScale * frameCount;
+      let nx = mySmoke2.noiseScale * x;
+      let ny = mySmoke2.noiseScale * y;
       // Compute noise value.
-      let c = noiseLevel * noise(nx, ny, nt);
+      let nt = mySmoke2.noiseScale * frameCount;
+      // Compute noise value.
+      let c = mySmoke2.noiseLevel * noise(nx, ny, nt);
       // Render.
       stroke(c);
       point(x, y);
       stroke(c, 0, c);
-      let circleX=x;
-      let circleY=y;
+      let circleX = x;
+      let circleY = y;
       noFill();
-      ellipse(circleX,circleY,radius*5,radius*5)
-    } 
+      ellipse(circleX, circleY, mySmoke2.radius * 5, mySmoke2.radius * 5)
+    }
   }
 }
 
 function drawBackground() {
   background(51);
-  let s="click canvus to open the gate and make wave flow faster"
+  let s = "click canvus to open the gate and make wave flow faster"
   textSize(50);
   fill(0, 230, 255);
-  text(s,windowWidth/2,windowHeight/2);
+  text(s, windowWidth / 2, windowHeight / 2);
   fill(0, 230, 255);
   //draw a polygon out of the wave points
   beginShape();
@@ -550,5 +557,5 @@ function createElements() {
   //grey,row 5, column 3
   elementList.push(new element(128 / 800 * size, 310 / 800 * size, 30 / 800 * size, 20 / 800 * size, "#D5D5D0"));
   //grey,row 5, column 3
-  elementList.push(new element(130 / 800 * size, 650 / 800 * size, 30 / 800 * size, 20 / 800 * size, "#D5D5D0")); 
+  elementList.push(new element(130 / 800 * size, 650 / 800 * size, 30 / 800 * size, 20 / 800 * size, "#D5D5D0"));
 }
