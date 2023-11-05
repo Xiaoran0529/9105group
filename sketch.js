@@ -25,6 +25,7 @@ function draw() {
     smoke();
     smoke2();
     smoke3();
+    smoke4();
   }
     
   
@@ -105,6 +106,29 @@ function smoke3() {
       stroke(c);
       point(x, y);
       stroke(c, 0, 255);
+      let circleX=x;
+      let circleY=y;
+      noFill();
+      ellipse(circleX,circleY,radius*5,radius*5)
+    } 
+  }
+}
+function smoke4() {
+  let noiseLevel = 255;
+  let noiseScale = 0.3;
+  let radius = 7;
+  for (let y = 870; y < 1300; y += 10) {
+    for (let x = 350; x < 800; x += 10) {
+      // Scale input coordinates.
+      let nx = noiseScale*x;
+      let ny = noiseScale*y;
+      let nt = noiseScale * frameCount;
+      // Compute noise value.
+      let c = noiseLevel * noise(nx, ny, nt);
+      // Render.
+      stroke(c);
+      point(x, y);
+      stroke(c, 0, c);
       let circleX=x;
       let circleY=y;
       noFill();
