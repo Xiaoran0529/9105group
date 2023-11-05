@@ -17,8 +17,7 @@ function draw() {
   stroke(0);
   noFill();
   rect(0,0,size,size);
-  noStroke();
-  
+  noStroke();  
   // draw wave;
   drawBackground();
   // draw smoke;
@@ -116,6 +115,10 @@ function smoke3() {
 
 function drawBackground() {
   background(51);
+  let s="click canvus to open the gate and make wave flow faster"
+  textSize(50);
+  fill(0, 230, 255);
+  text(s,windowWidth/2,windowHeight/2);
   fill(0, 230, 255);
   //draw a polygon out of the wave points
   beginShape();
