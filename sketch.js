@@ -34,8 +34,8 @@ function draw() {
 }
 
 function smoke() {
-  let noiseLevel = 255;
-  let noiseScale = 0.009;
+  let noiseLevel = 300;
+  let noiseScale = 1;
   let radius = 5;
   for (let y = 270; y < 550; y += 10) {
     for (let x = 355; x < 820; x += 10) {
@@ -43,11 +43,13 @@ function smoke() {
       let nx = noiseScale*x;
       let ny = noiseScale*y;
       // Compute noise value.
-      let c = noiseLevel * noise(nx, ny);
+      let nt = noiseScale * frameCount;
+      // Compute noise value.
+      let c = noiseLevel * noise(nx, ny, nt);
       // Render.
       stroke(c);
       point(x, y);
-      stroke(225, 225, 0);
+      stroke(225, c, 0);
       let circleX=x;
       let circleY=y;
       noFill();
@@ -56,20 +58,21 @@ function smoke() {
   }
 }
 function smoke2() {
-  let noiseLevel = 255;
-  let noiseScale = 0.009;
+  let noiseLevel = 1000;
+  let noiseScale = 5;
   let radius = 3;
   for (let y = 70; y < 230; y += 10) {
     for (let x = 900; x < 1270; x += 10) {
       // Scale input coordinates.
       let nx = noiseScale*x;
       let ny = noiseScale*y;
+      let nt = noiseScale * frameCount;
       // Compute noise value.
-      let c = noiseLevel * noise(nx, ny);
+      let c = noiseLevel * noise(nx, ny, nt);
       // Render.
       stroke(c);
       point(x, y);
-      stroke(225, 0, 255);
+      stroke(100, c,100);
       let circleX=x;
       let circleY=y;
       noFill();
@@ -80,19 +83,20 @@ function smoke2() {
 
 function smoke3() {
   let noiseLevel = 255;
-  let noiseScale = 0.009;
+  let noiseScale = 0.3;
   let radius = 7;
   for (let y = 970; y < 1300; y += 10) {
     for (let x = 900; x < 1280; x += 10) {
       // Scale input coordinates.
       let nx = noiseScale*x;
       let ny = noiseScale*y;
+      let nt = noiseScale * frameCount;
       // Compute noise value.
-      let c = noiseLevel * noise(nx, ny);
+      let c = noiseLevel * noise(nx, ny, nt);
       // Render.
       stroke(c);
       point(x, y);
-      stroke(255, 255, 255);
+      stroke(c, 0, 255);
       let circleX=x;
       let circleY=y;
       noFill();
@@ -123,8 +127,6 @@ function drawBackground() {
   vertex(0, height);
   endShape(CLOSE);
 }
-
-
 class element {
   constructor(x, y, width, height, color) {
     this.x = x;
