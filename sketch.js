@@ -23,8 +23,8 @@ function draw() {
   for (let i = 0; i < elementList.length; i++) {
     elementList[i].display();
   }
-  yh -=0.3;
-  xh -=0.3;
+  yh -=0.5;
+  xh -=0.5;
 }
 
 function drawBackground() {
