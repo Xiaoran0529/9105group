@@ -18,7 +18,38 @@ function draw() {
   rect(0,0,size,size);
   noStroke();
 
+  // draw background
+  drawBackground();
+  // draw elements
+  for (let i = 0; i < elementList.length; i++) {
+    elementList[i].display();
+  }
+  yh -=0.5;
+  xh -=0.5;
+}
 
+function drawBackground() {
+  background(51);
+  fill(0, 250, 255);
+  //draw a polygon out of the wave points
+  beginShape();
+  let xoff = 0;
+  // Iterate over horizontal pixels
+  for (let x = 0; x <= windowWidth; x += 10) {
+    // change wave status
+    // Calculate a y value according to noise, map to a value between xh and yh
+    let y = map(noise(xoff, yoff), 0, 3, xh, yh);
+    // Set the vertex
+    vertex(x, y);
+    // Increment x dimension for noise
+    xoff += 0.05;
+  }
+  // increment y dimension for noise
+  yoff += 0.01;
+  vertex(width, height);
+  vertex(0, height);
+  endShape(CLOSE);
+}
 
 class element {
   constructor(x, y, width, height, color) {
