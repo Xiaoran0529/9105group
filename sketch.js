@@ -16,10 +16,10 @@ function draw() {
   rect(0, 0, size, size);
   noStroke();
 
-  // 绘制背景
+  // draw background
   drawBackground();
 
-  // 绘制所有元素
+  // draw elements
   for (let i = 0; i < elementList.length; i++) {
     elementList[i].display();
   }
@@ -34,7 +34,8 @@ function drawBackground() {
   let xoff = 0;
 
   for (let x = 0; x <= windowWidth; x += 10) {
-    let y = map(noise(xoff, yoff), 0, 3, xh, yh); // 修改这里来适应你的背景
+    // change background status
+    let y = map(noise(xoff, yoff), 0, 3, xh, yh);
     vertex(x, y);
     xoff += 0.05;
   }
