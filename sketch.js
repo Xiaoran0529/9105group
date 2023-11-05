@@ -1,14 +1,23 @@
 let elementList = [];
 let size;
-let speed = 0;
+
+// moving speed and color changing speed
+let speed = [] ;
 let colorSpeed = 60;
 
 function setup() {
 createCanvas(windowWidth, windowHeight);
   size = min(windowWidth, windowHeight); 
 
+  //Draw all rectangles based on their positions
   creatElements();
-  speed = random(-3,3);
+
+  // generate 15 different speed for 7 columns and 8 rows
+  for(i = 0; i < 15; i++){
+  speed.push (random(-3,3));
+  console.log(speed[i])
+  }
+
 }
 
 function draw() {
@@ -17,20 +26,107 @@ function draw() {
   noFill();
   rect(0, 0, size, size);
 
+  //display all the elements
   noStroke();
-
   for (let i = 0; i < elementList.length; i++) {
     elementList[i].display();
   }
-console.log(elementList.length)
-  elementList[50].move(speed, 0);
-  elementList[51].move(speed, 0);
 
-  if (frameCount % colorSpeed == 0) {
-    elementList[157].changeColor();
+//big squares color change every second
+if (frameCount % colorSpeed == 0) {
+    let colorChange = [157, 6, 35, 90, 84, 79, 81, 86, 92, 
+      157, 165, 166, 203, 205, 207, 224, 225];
+    for (i = 0; i < colorChange.length; i++){
+      elementList[colorChange[i]].changeColor();
+    }
   }
+
+// give different moving speed to columns and rows
+ 
+//column1
+for(let a = 38; a < 56; a++){
+    elementList[a].move(0, speed[0]);
+    }
+//column2
+let c2 = [56,57,58,59,60,62,63,64,65,66,
+  68,69,70,71,72,73,74,95];
+    for (i = 0; i < c2.length; i++){
+      elementList[c2[i]].move(0,speed[1]);
+    }
+//column3
+  for(let a = 112; a < 116; a++){
+       elementList[a].move(0, speed[2]);
+        }
+  for(let a = 131; a < 136; a++){
+      elementList[a].move(0, speed[2]);
+       }
+//column4
+let c4 = [120,121,122,123,124,125,126,127,
+  128,173,174,175,176,177,178,179];
+for (i = 0; i < c4.length; i++){
+  elementList[c4[i]].move(0,speed[3]);
+}
+//column5
+let c5 = [139,140,141,142,143,144,189,192,
+  193,194,195,196,197,198,200];
+for (i = 0; i < c5.length; i++){
+  elementList[c5[i]].move(0,speed[4]);
+}
+//column6
+let c6 = [184,185,186,187,188,227,228,229,
+230,231,232,233,234];
+for (i = 0; i < c6.length; i++){
+  elementList[c6[i]].move(0,speed[5]);
+}
+//column7
+for(let a = 235; a < 244; a++){
+  elementList[a].move(0, speed[6]);
+   }
+//row1
+let r1 = [89,31,110,111];
+  for (i = 0; i < r1.length; i++){
+    elementList[r1[i]].move(speed[7],0);
+  }
+//row2
+let r2 = [25,80,109,146,172];
+  for (i = 0; i < r2.length; i++){
+    elementList[r2[i]].move(speed[8],0);
+  }
+//row3
+let r3 = [24,91,147,148,159,160];
+for (i = 0; i < r3.length; i++){
+  elementList[r3[i]].move(speed[9],0);
+}
+//row4
+let r4 = [26,97,98,149,161,180,210,220];
+for (i = 0; i < r4.length; i++){
+  elementList[r4[i]].move(speed[10],0);
+}
+//row5
+let r5 = [101,102,103,181,199,211,212,223];
+for (i = 0; i < r5.length; i++){
+  elementList[r5[i]].move(speed[11],0);
+}
+//row6
+let r6 = [118,158,182,191,213,214,221];
+for (i = 0; i < r6.length; i++){
+  elementList[r6[i]].move(speed[12],0);
+}
+//row7
+let r7 = [87,106,107,117,152,153,169,215,216];
+for (i = 0; i < r7.length; i++){
+  elementList[r7[i]].move(speed[13],0);
+}
+//row8
+let r8 = [138,154,155,170,209,244];
+for (i = 0; i < r8.length; i++){
+  elementList[r8[i]].move(speed[14],0);
 }
 
+}
+
+//define a class to create every element
+// and display, move, color change functions
 class Element {
   constructor(x, y, width, height, color) {
     this.x = x;
@@ -64,21 +160,30 @@ class Element {
       this.y = -this.height;
     }
 }
-changeColor() {
+ changeColor() {
   this.color = color(random(255), random(255), random(255));
 }
 }
 
+// moving speed up 10 times when the mouse is pressed
 function mousePressed(){
- speed *= 10;
+
+ for (let i = 0; i < 15; i++) {
+  speed[i] = speed[i] * 10;
+}
  colorSpeed = 3;
 }
 
+// go back to original speed when the mouse is released
 function mouseReleased(){
-  speed = random(-3,3);
+
+for (let i = 0; i < 15; i++) {
+  speed[i] = speed[i] / 10;
+}
   colorSpeed = 60;
  }
 
+ // define the position of every element
 function creatElements() {
 
   //Window width horizontal yellow strips
