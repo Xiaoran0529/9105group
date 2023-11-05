@@ -1,10 +1,7 @@
 let elementList = [];
-let movingElementList= [];
 let size;
 let song;
 let fft;
-let vol;
-
 
 function preload() {
   song = loadSound("assets/Bossa.mp3");
@@ -17,7 +14,6 @@ function setup() {
   size = windowWidth < windowHeight ? windowWidth : windowHeight;
 
   creatElements();
-  createMovingElements();
   fft = new p5.FFT();
   amp = new p5.Amplitude();
 }
@@ -45,30 +41,56 @@ function draw() {
   console.log(wave)
   let spectrum = fft.analyze()
   console.log(spectrum)
-  push();
 
-  fill(0,0,70 + vol * 0.5);
+  push();
+  noStroke();
+  fill("#E8D135")
+  
+//Window width horizontal yellow strips
+for (let o = 0; o < spectrum.length; o++){
+
+
+let horizontalStrip = [18 / 800 * size,122 / 800 * size, 277 / 800 * size, 343 / 800 * size, 447 / 800 * size, 500 / 800 * size,680 / 800 * size, 755 / 800 * size];
+
+for (let a = 0; a < horizontalStrip.length; a++) {
+  let w = map(spectrum[a], 0, 255, 0, size);
+  rect(0, horizontalStrip[a], w, 20 / 800 * size)
+}
+
+//Window height vertical yellow strips
+let verticalStrip = [45 / 800 * size, 178 / 800 * size, 429 / 800 * size, 462 / 800 * size, 672 / 800 * size,768 / 800 * size]
+for (let b = 0; b < verticalStrip.length; b++) {
+  let h = map(spectrum[b], 0, 255, 0, size);
+  rect(verticalStrip[b], size, 16 / 800 * size, -h)
+}
+
+}
+  pop();
+
+
+  push();
+  fill(10,0,50 + vol * 0.5);
   for (let v = 0; v < 6; v++) {
     
     let cube_x = [45 / 800 * size, 92 / 800 * size,178 / 800 * size, 429 / 800 * size, 462 / 800 * size, 672 / 800 * size,768 / 800 * size] 
-    let cubeSpacing = 30;
     
     for (let z = 0; z < cube_x.length; z++){
-      rect(cube_x[z], vol , 16 / 800 * size, 20 / 800 * size)
+      rect(cube_x[z], (size - vol) , 16 / 800 * size, 20 / 800 * size)
     }
-    
-    
     }
     pop();
-    fill(70 + vol_2 * 0.5,0,0);
+
+    push();
+    fill(50 + vol_2 * 0.5,0,20);
     for (let n = 0; n < 6; n++) {
     let cube_y = [18 / 800 * size, 122 / 800 * size, 277 / 800 * size, 343 / 800 * size, 447 / 800 * size, 500 / 800 * size,680 / 800 * size, 755 / 800 * size];
     for (let m = 0; m < cube_y.length; m++){
       rect(vol_2, cube_y[m],20 / 800 * size,20 / 800 * size)
      }
     }
+    pop();
 
-  
+
 }
 
 class element {
@@ -86,40 +108,10 @@ class element {
   }
 }
 
-  class movingElement {
-    constructor(x, y, width, height, color) {
-      this.x = x;
-      this.y = y;
-      this.height = height;
-      this.width = width;
-      this.color = color;
-  }
-  display() {
-    fill(this.color);
-    rect(this.x, this.y, this.width, this.height)
-  }
-}
 
-function createMovingElements () {
-  
-
-
-}
 
 function creatElements() {
-
-  //Window width horizontal yellow strips
   
-  let horizontalStrip = [18 / 800 * size,122 / 800 * size, 277 / 800 * size, 343 / 800 * size, 447 / 800 * size, 500 / 800 * size,680 / 800 * size, 755 / 800 * size];
-  for (let a = 0; a < horizontalStrip.length; a++) {
-    elementList.push(new element(0, horizontalStrip[a], size, 20 / 800 * size, "#E8D135"))
-  }
-  //Window height vertical yellow strips
-  let verticalStrip = [45 / 800 * size, 178 / 800 * size, 429 / 800 * size, 462 / 800 * size, 672 / 800 * size,768 / 800 * size]
-  for (let b = 0; b < verticalStrip.length; b++) {
-    elementList.push(new element(verticalStrip[b], 0, 16 / 800 * size, size, "#E8D135"))
-  }
-
   let list_x = [18 / 800 * size, 92 / 800 * size, 702 / 800 * size, 740 / 800 * size, 740 / 800 * size, 740 / 800 * size];
   let list_y = [0, 0, 0, 0, 123 / 800 * size, 500 / 800 * size];
   let list_h = [278 / 800 * size, 770 / 800 * size, 297 / 800 * size, 81 / 800 * size, 236 / 800 * size, 155 / 800 * size];
