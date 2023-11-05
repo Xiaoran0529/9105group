@@ -3,10 +3,11 @@ let size;
 let speed = 0;
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+createCanvas(windowWidth, windowHeight);
   size = windowWidth < windowHeight ? windowWidth : windowHeight;
 
   creatElements();
+  speed = random(-3,3);
 }
 
 function draw() {
@@ -22,8 +23,7 @@ function draw() {
   }
 console.log(elementList.length)
   elementList[50].move(frameCount%20, 0);
-  elementList[51].move(-1, 0);
-
+  elementList[51].move(speed, 0);
 
 }
 
@@ -61,6 +61,14 @@ class element {
     }
 }
 }
+
+function mousePressed(){
+ speed *= 10;
+}
+
+function mouseReleased(){
+  speed = random(-3,3);
+ }
 
 function creatElements() {
 
