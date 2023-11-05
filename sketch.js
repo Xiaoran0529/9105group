@@ -1,30 +1,40 @@
 let elementList = [];
+let movingElementList= [];
 let size;
 let song;
 let fft;
+
 function preload() {
   song = loadSound("assets/Bossa.mp3");
   }
 
 function setup() {
+  colorMode(RGB);
   createCanvas(windowWidth, windowHeight);
   size = windowWidth < windowHeight ? windowWidth : windowHeight;
 
   creatElements();
+  createMovingElements();
+  fft = new p5.FFT();
+  amp = new p5.Amplitude();
 }
 
 function draw() {
   background(255);
-  stroke(0);
+  push();
   noFill();
   rect(0, 0, size, size);
-
   noStroke();
 
   for (let i = 0; i < elementList.length; i++) {
     elementList[i].display();
   }
+  for (let j = 0; j < movingElementList.length; j++) {
+    movingElementList[j].display();
+  }
+  pop();
 
+  
 }
 
 class element {
@@ -41,6 +51,21 @@ class element {
     rect(this.x, this.y, this.width, this.height);
   }
 }
+
+  class movingElement {
+    constructor(x, y, width, height, color) {
+      this.x = x;
+      this.y = y;
+      this.height = height;
+      this.width = width;
+      this.color = color;
+  }
+  display() {
+    fill(this.color);
+    rect(this.x, this.y, this.width, this.height)
+  }
+}
+
 
 function creatElements() {
 
@@ -64,18 +89,6 @@ function creatElements() {
   }
 
 
-// blue rect
-elementList.push(new element(230/ 800 * size, 363 / 800 * size, 70/ 800 * size, 84 / 800 * size, "#4468BC"));
-elementList.push(new element(510 / 800 * size, 140/ 800 * size, 100 / 800 * size, 138 / 800 * size, "#4468BC"));
-elementList.push(new element(62 / 800 * size, 539 / 800 * size, 31 / 800 * size, 40 / 800 * size, "#4468BC"));
-elementList.push(new element(123/ 800 * size, 70/ 800 * size, 30 / 800 * size, 20 / 800 * size, "#D5D5D0"));
-elementList.push(new element(325/ 800 * size, 379/ 800 * size, 56 / 800 * size, 50 / 800 * size, "#D5D5D0"));
-elementList.push(new element(570/ 800 * size, 400/ 800 * size, 50 / 800 * size, 30 / 800 * size, "#D5D5D0"));
-//grey,row 5, column 5
-elementList.push(new element(570/ 800 * size, 447/ 800 * size, 50 / 800 * size, 20 / 800 * size, "#D5D5D0"));
-//grey,row 5, column 5
-elementList.push(new element(558/ 800 * size, 483/ 800 * size, 69 / 800 * size, 15/ 800 * size, "#D5D5D0"));
-
   //Residual yellow
   let yellow_y = [545 / 800 * size, 618 / 800 * size, 705 / 800 * size,];
   let yellow_w = [45 / 800 * size, 45 / 800 * size, 45 / 800 * size];
@@ -89,7 +102,7 @@ elementList.push(new element(558/ 800 * size, 483/ 800 * size, 69 / 800 * size, 
   let column4_x = [122 / 800 * size, 92 / 800 * size, 122 / 800 * size, 122 / 800 * size, 160 / 800 * size, 92 / 800 * size, 108 / 800 * size, 124 / 800 * size, 108 / 800 * size, 108 / 800 * size, 108 / 800 * size, 124 / 800 * size, 124 / 800 * size];
   let column4_y = [33 / 800 * size, 48 / 800 * size, 33 / 800 * size, 90 / 800 * size, 122 / 800 * size, 210 / 800 * size, 278 / 800 * size, 278 / 800 * size, 395 / 800 * size, 580 / 800 * size, 630 / 800 * size, 680 / 800 * size, 755 / 800 * size];
   let column4_w = [32 / 800 * size, 86 / 800 * size, 32 / 800 * size, 32 / 800 * size, 16 / 800 * size, 86 / 800 * size, 16 / 800 * size, 37 / 800 * size, 70 / 800 * size, 70 / 800 * size, 70 / 800 * size, 20 / 800 * size, 20 / 800 * size];
-  let column4_h = [35 / 800 * size, 22 / 800 * size, 35 / 800 * size, 33 / 800 * size, 20 / 800 * size, 50 / 800 * size, 20 / 800 * size, 76 / 800 * size, 51 / 800 * size, 16 / 800 * size, 51 / 800 * size, 16 / 800 * size];
+  let column4_h = [35 / 800 * size, 22 / 800 * size, 35 / 800 * size, 33 / 800 * size, 20 / 800 * size, 50 / 800 * size, 20 / 800 * size, 76 / 800 * size, 51 / 800 * size, 16 / 800 * size, 51 / 800 * size, 20 / 800 * size, 20 / 800 * size];
   let column4_col = ["#A7392C", "#E8D135", "#A7392C", "#A7392C", "#A7392C", "#E8D135", "#A7392C", "#E8D135", "#A7392C", "#E8D135", "#E8D135", "#A7392C", "#A7392C"];
   for (let o = 0; o < column4_y.length; o++) {
     elementList.push(new element(column4_x[o], column4_y[o], column4_w[o], column4_h[o], column4_col[o]))
@@ -115,25 +128,52 @@ elementList.push(new element(558/ 800 * size, 483/ 800 * size, 69 / 800 * size, 
 
 
   // red rect row10
-  let row10_x = [702 / 800 * size, 689 / 800 * size, 687 / 800 * size, 687 / 800 * size, 722 / 800 * size, 720 / 800 * size];
-  let row10_y = [164 / 800 * size, 603 / 800 * size, 639 / 800 * size, 387 / 800 * size, 387 / 800 * size, 755 / 800 * size];
-  let row10_w = [ 54 / 800 * size, 51 / 800 * size, 93 / 800 * size, 93 / 800 * size, 16 / 800 * size, 16 / 800 * size];
-  let row10_h = [ 47 / 800 * size, 36 / 800 * size, 16 / 800 * size, 39 / 800 * size, 39 / 800 * size, 16 / 800 * size];
-  let row10_col = ["#A7392C", "#A7392C", "#E8D135", "#E8D135", "#A7392C", "#A7392C"];
+  let row10_x = [702 / 800 * size, 689 / 800 * size, 687 / 800 * size, 687 / 800 * size, 722 / 800 * size, 720 / 800 * size,325 / 800 * size];
+  let row10_y = [164 / 800 * size, 603 / 800 * size, 639 / 800 * size, 387 / 800 * size, 387 / 800 * size, 755 / 800 * size,290 / 800 * size];
+  let row10_w = [ 54 / 800 * size, 51 / 800 * size, 93 / 800 * size, 93 / 800 * size, 16 / 800 * size, 16 / 800 * size,56 / 800 * size];
+  let row10_h = [ 47 / 800 * size, 36 / 800 * size, 16 / 800 * size, 39 / 800 * size, 39 / 800 * size, 20 / 800 * size, 170 / 800 * size];
+  let row10_col = ["#A7392C", "#A7392C", "#E8D135", "#E8D135", "#A7392C", "#A7392C","#E8D135" ];
   for (let r = 0; r < row10_y.length; r++) {
     elementList.push(new element(row10_x[r], row10_y[r], row10_w[r], row10_h[r], row10_col[r]))
   }
+ 
+// blue rect
+elementList.push(new element(230/ 800 * size, 363 / 800 * size, 70/ 800 * size, 84 / 800 * size, "#4468BC"));
+elementList.push(new element(510 / 800 * size, 140/ 800 * size, 100 / 800 * size, 138 / 800 * size, "#4468BC"));
+elementList.push(new element(62 / 800 * size, 539 / 800 * size, 31 / 800 * size, 40 / 800 * size, "#4468BC"));
+elementList.push(new element(718/ 800 * size, 70/ 800 * size, 50 / 800 * size, 30 / 800 * size, "#4468BC"));
+elementList.push(new element(123/ 800 * size, 70/ 800 * size, 30 / 800 * size, 20 / 800 * size, "#D5D5D0"));
+elementList.push(new element(325/ 800 * size, 379/ 800 * size, 56 / 800 * size, 50 / 800 * size, "#D5D5D0"));
+elementList.push(new element(570/ 800 * size, 400/ 800 * size, 50 / 800 * size, 30 / 800 * size, "#D5D5D0"));
 
+//grey,row 5, column 5
+elementList.push(new element(570/ 800 * size, 447/ 800 * size, 50 / 800 * size, 20 / 800 * size, "#D5D5D0"));
+//grey,row 5, column 5
+elementList.push(new element(558/ 800 * size, 483/ 800 * size, 69 / 800 * size, 18/ 800 * size, "#D5D5D0"));
+
+}
+
+
+function createMovingElements () {
   let cube_x = [45 / 800 * size, 92 / 800 * size,178 / 800 * size, 429 / 800 * size, 462 / 800 * size, 672 / 800 * size,768 / 800 * size] 
   let cubeSpacing = 30;
+  const c = color(random(200),100,150);
   for (let z = 0; z < cube_x.length; z++){
-    elementList.push(new element(cube_x[z],  random(height) + cubeSpacing ,16 / 800 * size,20 / 800 * size,random(255)))
+    movingElementList.push(new movingElement(cube_x[z],  random(size) + cubeSpacing ,16 / 800 * size,20 / 800 * size, c))
   }
   
   let cube_y = [18 / 800 * size, 122 / 800 * size, 277 / 800 * size, 343 / 800 * size, 447 / 800 * size, 500 / 800 * size,680 / 800 * size, 755 / 800 * size];
   for (let v = 0; v < cube_y.length; v++){
-    elementList.push(new element(random(width) + cubeSpacing, cube_y[v],20 / 800 * size,20 / 800 * size,random(255)))
-  }
+    movingElementList.push(new movingElement(random(size) + cubeSpacing, cube_y[v],20 / 800 * size,20 / 800 * size, c))
+   }
 
+}
+
+function mouseClicked(){
+  if (song.isPlaying()) {
+    song.pause()
+  } else {
+    song.play()
+  }
 }
 
