@@ -47,26 +47,24 @@ function keyPressed() {
     '5': "#8A2F8C"  // Purple
   };
 
-  // Check if the key is in the keyToColor mapping
-  if (key in keyToColor) {
-    // Change the color of all elements to the selected color
-    for (let i = 0; i < elementList.length; i++) {
-      elementList[i].color = keyToColor[key];
-    }
-  }
-}
-// Listen for key press events
-function keyPressed() {
-  // If the Enter or Return key is pressed (keyCode 13)
+  // If the Enter or Return key is pressed
   if (keyCode === ENTER || keyCode === RETURN) {
-    // Iterate over all elements
+    // Iterate over all elements and assign new random sizes
     for (let i = 0; i < elementList.length; i++) {
-      // Assign a new random width and height to each element
       elementList[i].width = random(20, 100);
       elementList[i].height = random(20, 100);
     }
+  } else {
+    // Check if the key is in the keyToColor mapping and change the color
+    if (key in keyToColor) {
+      let newColor = keyToColor[key];
+      for (let i = 0; i < elementList.length; i++) {
+        elementList[i].color = newColor;
+      }
+    }
   }
 }
+
 class element {
   constructor(x, y, width, height, color) {
     this.x = x;
