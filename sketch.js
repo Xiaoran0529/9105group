@@ -2,7 +2,8 @@ let elementList = [];
 let size;
 let yoff = 0.0; // 2nd dimension of perlin noise
 let yh=900;
-let xh=1300
+let xh=1300;
+let interactiveNoise;
 function setup() {
   createCanvas(windowWidth, windowHeight);
   size = windowWidth < windowHeight ? windowWidth : windowHeight;
@@ -30,16 +31,20 @@ function draw() {
 function drawBackground() {
   background(51);
   fill(0, 255, 255);
+  //draw a polygon out of the wave points
   beginShape();
   let xoff = 0;
-
+  // Iterate over horizontal pixels
   for (let x = 0; x <= windowWidth; x += 10) {
-    // change background status
+    // change wave status
+    // Calculate a y value according to noise, map to a value between xh and yh
     let y = map(noise(xoff, yoff), 0, 3, xh, yh);
+    // Set the vertex
     vertex(x, y);
+    // Increment x dimension for noise
     xoff += 0.05;
   }
-
+  // increment y dimension for noise
   yoff += 0.01;
   vertex(width, height);
   vertex(0, height);
