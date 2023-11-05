@@ -5,6 +5,7 @@ let yoff = 0.0;
 let yh=900;
 let xh=1300;
 let interactiveNoise;
+let smokeVisible = true;
 function setup() {
   createCanvas(windowWidth, windowHeight);
   size = windowWidth < windowHeight ? windowWidth : windowHeight;
@@ -21,9 +22,14 @@ function draw() {
   // draw wave;
   drawBackground();
   // draw smoke;
-  smoke();
-  smoke2()
-  smoke3()
+  if (smokeVisible){
+    smoke();
+    smoke2();
+    smoke3();
+  }
+    
+  
+  
   // draw elements
   for (let i = 0; i < elementList.length; i++) {
     elementList[i].display();
@@ -31,6 +37,9 @@ function draw() {
   //change xh and yh every frame to make it an animation 
   yh -=1;
   xh -=1;
+  if (mouseIsPressed){
+    smokeVisible =! smokeVisible;
+  }
 }
 
 function smoke() {
@@ -127,6 +136,7 @@ function drawBackground() {
   vertex(0, height);
   endShape(CLOSE);
 }
+
 class element {
   constructor(x, y, width, height, color) {
     this.x = x;
@@ -515,4 +525,3 @@ function createElements() {
   //grey,row 5, column 3
   elementList.push(new element(130 / 800 * size, 650 / 800 * size, 30 / 800 * size, 20 / 800 * size, "#D5D5D0")); 
 }
-
