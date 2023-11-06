@@ -24,24 +24,15 @@ function draw() {
   // draw wave;
   drawBackground();
   // draw smoke;
-  if (smokeVisible) {
-    smoke();
-    //smoke2();
-    //smoke3();
-    //smoke4();
-  }
-  if (smoke2Visible) {
-    smoke2();
-    //smoke3();
-    //smoke4();
-  }
-  if (smoke3Visible) {
-    smoke3();
-    //smoke4();
-  }
-  if (smoke4Visible) {
-    smoke4();
-  }
+  smoke();
+  smoke2();
+  smoke3();
+  smoke4();
+  smoke5();
+  smoke6();
+  smoke7();
+  smoke8();
+  smoke9();
 
 
 
@@ -55,23 +46,6 @@ function draw() {
   xh -= 1;
 }
 
-function keyPressed(){
-  if (key==='1'){
-    smokeVisible =! smokeVisible;
-  }
-  else if (key==='2'){
-    smoke2Visible =! smoke2Visible;
-  }
-  else if (key==='3'){
-    smoke3Visible =! smoke3Visible;
-  }
-  else if (key==='4'){
-    smoke4Visible =! smoke4Visible;
-  }
-  else if (key ==='r'){
-    location.reload();
-  }
-}
 class smokeStatus {
   constructor(x, y, noiseLevel, noiseScale, radius) {
     this.x = x;
@@ -85,8 +59,30 @@ class smokeStatus {
 
 function smoke() {
   let mySmoke = new smokeStatus(355, 270, 300, 1, 5);
-  for (let y = mySmoke.y; y < 550; y += 10) {
-    for (let x = mySmoke.x; x < 820; x += 10) {
+  for (let y = mySmoke.y; y < 550; y += 20) {
+    for (let x = mySmoke.x; x < 820; x += 15) {
+      // Scale input coordinates.
+      let nx = mySmoke.noiseScale * x;
+      let ny = mySmoke.noiseScale * y;
+      // Compute noise value.
+      let nt = mySmoke.noiseScale * frameCount;
+      // Compute noise value.
+      let c = mySmoke.noiseLevel * noise(nx, ny, nt);
+      // Render.
+      stroke(c);
+      point(x, y);
+      stroke(225, c, 0);
+      let circleX = x;
+      let circleY = y;
+      noFill();
+      ellipse(circleX, circleY, mySmoke.radius * 5, mySmoke.radius * 5)
+    }
+  }
+}
+function smoke5() {
+  let mySmoke = new smokeStatus(655, 70, 300, 1, 5);
+  for (let y = mySmoke.y; y < 250; y += 5) {
+    for (let x = mySmoke.x; x < 800; x += 5) {
       // Scale input coordinates.
       let nx = mySmoke.noiseScale * x;
       let ny = mySmoke.noiseScale * y;
@@ -106,9 +102,9 @@ function smoke() {
   }
 }
 function smoke2() {
-  let mySmoke2 = new smokeStatus(900, 70, 1000, 5, 3);
-  for (let y = mySmoke2.y; y < 230; y += 10) {
-    for (let x = mySmoke2.x; x < 1270; x += 10) {
+  let mySmoke2 = new smokeStatus(900, 70, 500, 5, 3);
+  for (let y = mySmoke2.y; y < 230; y += 30) {
+    for (let x = mySmoke2.x; x < 1270; x += 50) {
       // Scale input coordinates.
       let nx = mySmoke2.noiseScale * x;
       let ny = mySmoke2.noiseScale * y;
@@ -127,10 +123,54 @@ function smoke2() {
     }
   }
 }
+function smoke6() {
+  let mySmoke2 = new smokeStatus(1100, 270, 1000, 5, 3);
+  for (let y = mySmoke2.y; y < 530; y += 50) {
+    for (let x = mySmoke2.x; x < 1270; x += 50) {
+      // Scale input coordinates.
+      let nx = mySmoke2.noiseScale * x;
+      let ny = mySmoke2.noiseScale * y;
+      // Compute noise value.
+      let nt = mySmoke2.noiseScale * frameCount;
+      // Compute noise value.
+      let c = mySmoke2.noiseLevel * noise(nx, ny, nt);
+      // Render.
+      stroke(c);
+      point(x, y);
+      stroke(50, c, 10);
+      let circleX = x;
+      let circleY = y;
+      noFill();
+      ellipse(circleX, circleY, mySmoke2.radius * 5, mySmoke2.radius * 5)
+    }
+  }
+}
+function smoke7() {
+  let mySmoke2 = new smokeStatus(900, 270, 100, 5, 3);
+  for (let y = mySmoke2.y; y < 530; y += 50) {
+    for (let x = mySmoke2.x; x < 970; x += 50) {
+      // Scale input coordinates.
+      let nx = mySmoke2.noiseScale * x;
+      let ny = mySmoke2.noiseScale * y;
+      // Compute noise value.
+      let nt = mySmoke2.noiseScale * frameCount;
+      // Compute noise value.
+      let c = mySmoke2.noiseLevel * noise(nx, ny, nt);
+      // Render.
+      stroke(c);
+      point(x, y);
+      stroke(300, 100, 150);
+      let circleX = x;
+      let circleY = y;
+      noFill();
+      ellipse(circleX, circleY, mySmoke2.radius * 5, mySmoke2.radius * 5)
+    }
+  }
+}
 
 function smoke3() {
   let mySmoke2 = new smokeStatus(900, 970, 255, 0.3, 7);
-  for (let y = mySmoke2.y; y < 1300; y += 10) {
+  for (let y = mySmoke2.y; y < 1300; y += 20) {
     for (let x = mySmoke2.x; x < 1280; x += 10) {
       // Scale input coordinates.
       let nx = mySmoke2.noiseScale * x;
@@ -150,11 +190,55 @@ function smoke3() {
     }
   }
 }
+function smoke8() {
+  let mySmoke2 = new smokeStatus(900, 1300, 255, 0.3, 7);
+  for (let y = mySmoke2.y; y < 1430; y += 50) {
+    for (let x = mySmoke2.x; x < 1280; x += 10) {
+      // Scale input coordinates.
+      let nx = mySmoke2.noiseScale * x;
+      let ny = mySmoke2.noiseScale * y;
+      // Compute noise value.
+      let nt = mySmoke2.noiseScale * frameCount;
+      // Compute noise value.
+      let c = mySmoke2.noiseLevel * noise(nx, ny, nt);
+      // Render.
+      stroke(c);
+      point(x, y);
+      stroke(c, 155, 50);
+      let circleX = x;
+      let circleY = y;
+      noFill();
+      ellipse(circleX, circleY, mySmoke2.radius * 5, mySmoke2.radius * 5)
+    }
+  }
+}
+function smoke9() {
+  let mySmoke2 = new smokeStatus(350, 1300, 255, 0.3, 7);
+  for (let y = mySmoke2.y; y < 1430; y += 30) {
+    for (let x = mySmoke2.x; x < 800; x += 10) {
+      // Scale input coordinates.
+      let nx = mySmoke2.noiseScale * x;
+      let ny = mySmoke2.noiseScale * y;
+      // Compute noise value.
+      let nt = mySmoke2.noiseScale * frameCount;
+      // Compute noise value.
+      let c = mySmoke2.noiseLevel * noise(nx, ny, nt);
+      // Render.
+      stroke(c);
+      point(x, y);
+      stroke(c, 155, c);
+      let circleX = x;
+      let circleY = y;
+      noFill();
+      ellipse(circleX, circleY, mySmoke2.radius * 5, mySmoke2.radius * 5)
+    }
+  }
+}
 
 function smoke4() {
   let mySmoke2 = new smokeStatus(350, 870, 255, 0.3, 7);
   for (let y = mySmoke2.y; y < 1300; y += 10) {
-    for (let x = mySmoke2.x; x < 800; x += 10) {
+    for (let x = mySmoke2.x; x < 800; x += 20) {
       // Scale input coordinates.
       let nx = mySmoke2.noiseScale * x;
       let ny = mySmoke2.noiseScale * y;
@@ -174,12 +258,9 @@ function smoke4() {
   }
 }
 
+
 function drawBackground() {
   background(51);
-  let s = "press number 1-4 to open the gate and make wave flow faster,\n press again to close gate, \n press r to reload and start again"
-  textSize(50);
-  fill(0, 230, 255);
-  text(s, windowWidth / 2, windowHeight / 2);
   //wave color
   fill(0, 230, 255);
   //draw a polygon out of the wave points
