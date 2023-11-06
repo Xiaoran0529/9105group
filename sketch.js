@@ -37,19 +37,21 @@ function draw() {
 }
 
 class smokeStatus {
-  constructor(x, y, noiseLevel, noiseScale, radius) {
+  constructor(x, y, noiseLevel, noiseScale, width,height) {
     this.x = x;
     this.y = y;
     this.noiseLevel = noiseLevel;
     this.noiseScale = noiseScale
-    this.radius = radius;
+    this.width = width;
+    this.height = height;
+
   }
 
 }
 function smokeHorizontal() {
-  let mySmoke = new smokeStatus(0, 0, 500, 5, 10);
+  let mySmoke = new smokeStatus(0, 0, 500, 5, 10,30);
   for (let y = mySmoke.y; y < 1500; y += 100) {
-    for (let x = mySmoke.x; x < 1550; x += 20) {
+    for (let x = mySmoke.x; x < 1550; x += 10) {
       // Scale input coordinates.
       let nx = mySmoke.noiseScale * x;
       let ny = mySmoke.noiseScale * y;
@@ -60,16 +62,16 @@ function smokeHorizontal() {
       // Render.
       stroke(c);
       point(x, y);
-      stroke(255, c, c);
-      let circleX = x;
-      let circleY = y;
+      stroke(100, c, c);
+      let rectX = x;
+      let rectleY = y;
       noFill();
-      ellipse(circleX, circleY, mySmoke.radius * 5, mySmoke.radius * 5)
+      rect(rectX, rectleY, mySmoke.width * 10, mySmoke.height)
     }
   }
 }
 function smokeVertical() {
-  let mySmoke = new smokeStatus(0, 0, 500, 5, 10);
+  let mySmoke = new smokeStatus(0, 0, 500, 5, 50,10);
   for (let y = mySmoke.y; y < 1500; y += 10) {
     for (let x = mySmoke.x; x < 1550; x += 100) {
       // Scale input coordinates.
@@ -83,10 +85,10 @@ function smokeVertical() {
       stroke(c);
       point(x, y);
       stroke(c, c, 0);
-      let circleX = x;
-      let circleY = y;
+      let rectX = x;
+      let rectleY = y;
       noFill();
-      ellipse(circleX, circleY, mySmoke.radius * 5, mySmoke.radius * 5)
+      rect(rectX, rectleY, mySmoke.width , mySmoke.height * 10)
     }
   }
 }
