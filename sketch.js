@@ -12,7 +12,7 @@ function preload() {
 function setup() {
   createCanvas(windowWidth, windowHeight);
   size = windowWidth < windowHeight ? windowWidth : windowHeight;
-
+  frameRate(20);
   creatElements();
   fft = new p5.FFT();
   amp = new p5.Amplitude();
@@ -31,7 +31,7 @@ function draw() {
   }
   pop();
    
-  let vol = amp.getLevel() * 1000 ;
+  let vol = amp.getLevel() * 500 ;
   
   console.log(vol);
   let wave = fft.waveform();
@@ -43,7 +43,7 @@ function draw() {
   noStroke();
   fill((232 + vol/5) ,(209 - vol/5),53)
   
-//Window width horizontal yellow strips
+//Window width horizontal yellow stripes
 for (let o = 0; o < spectrum.length; o++){
 
 let horizontalStrip = [18 / 800 * size,122 / 800 * size, 277 / 800 * size, 343 / 800 * size, 447 / 800 * size, 500 / 800 * size,680 / 800 * size, 755 / 800 * size];
@@ -53,7 +53,7 @@ for (let a = 0; a < horizontalStrip.length; a++) {
   rect(0, horizontalStrip[a], w, 20 / 800 * size)
 }
 
-//Window height vertical yellow strips
+//Window height vertical yellow stripes
 let verticalStrip = [45 / 800 * size, 92 / 800 * size,178 / 800 * size, 429 / 800 * size, 462 / 800 * size, 672 / 800 * size,768 / 800 * size]
 for (let b = 0; b < verticalStrip.length; b++) {
   let h = map(spectrum[b], 0, 255, 0, size);
@@ -64,23 +64,23 @@ for (let b = 0; b < verticalStrip.length; b++) {
   pop();
 
   push();
-  fill(10,20,60 + vol);
+  fill(10,20,60 + vol*3);
   for (let v = 0; v < 6; v++) {
     
     let cube_x = [45 / 800 * size, 92 / 800 * size,178 / 800 * size, 429 / 800 * size, 462 / 800 * size, 672 / 800 * size,768 / 800 * size] 
     
     for (let z = 0; z < cube_x.length; z++){
-      rect(cube_x[z], (size - vol) , 16 / 800 * size, 20 / 800 * size)
+      rect(cube_x[z], (size - vol * z) , 16 / 800 * size, 20 / 800 * size)
     }
     }
     pop();
 
     push();
-    fill(50 + vol,10,10);
+    fill(50 + vol*3,10,10);
     for (let n = 0; n < 6; n++) {
     let cube_y = [18 / 800 * size, 122 / 800 * size, 277 / 800 * size, 343 / 800 * size, 447 / 800 * size, 500 / 800 * size,680 / 800 * size, 755 / 800 * size];
     for (let m = 0; m < cube_y.length; m++){
-      rect(vol, cube_y[m],20 / 800 * size,20 / 800 * size)
+      rect(vol * (m/2), cube_y[m],20 / 800 * size,20 / 800 * size)
      }
     }
     pop();
