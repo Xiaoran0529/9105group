@@ -21,14 +21,11 @@ function draw() {
   // draw wave;
   wave();
   // draw smoke;
-  if (smokeVisible) {
-    smokeHorizontal();
-    smokeHorizontal2();
-    smokeHorizontal3();
-    smokeHorizontal4();
-    smokeHorizontal5();
-
-  }
+  smokeHorizontal();
+  smokeHorizontal2();
+  smokeHorizontal3();
+  smokeHorizontal4();
+  smokeHorizontal5();
   smokeVertical();
   smokeVertical2();
   smokeVertical3();
@@ -46,7 +43,7 @@ function draw() {
   yh -= 1;
   xh -= 1;
   if (mouseIsPressed) {
-    smokeVisible = false; 
+    smokeVisible = false;
   }
 }
 
