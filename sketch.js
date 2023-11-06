@@ -10,7 +10,9 @@ function setup() {
   size = min(windowWidth, windowHeight);
   createElements();
 }
-
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);  
+}
 
 function draw() {
   background(225);

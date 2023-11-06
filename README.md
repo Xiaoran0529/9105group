@@ -8,4 +8,8 @@ https://p5js.org/reference/#/p5.Element/class
 the escape room with water
 https://www.youtube.com/watch?v=eoQamVLMq7g&ab_channel=RandomGamesWalkthroughs
 Tutorial 11, part2.
+windowResized method
+https://p5js.org/reference/#/p5/windowResized
+
+
 
