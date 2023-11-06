@@ -1,11 +1,15 @@
-# 9105group
+# 9103 TUT1 groupC
+
 // This is our group project
+// Individual works are in branches named with each member's name.
 <<<<<<< HEAD
 
 =======
 
-// Xiaoran Liu -> Perlin Noise 
+// Ash Yang -> Audio
 
-//Ash Yang -> Audio
+// Risheng Liu -> Time-based
 
-//Yining Wu -> User Input
+// Xiaoran Liu -> Perlin Noise
+
+// Yining Wu -> User Input
