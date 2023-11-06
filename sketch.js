@@ -47,7 +47,7 @@ class smokeStatus {
 
 }
 function smokeVertical() {
-  let mySmoke = new smokeStatus(0, 0, 500, 5, 5);
+  let mySmoke = new smokeStatus(0, 0, 500, 5, 10);
   for (let y = mySmoke.y; y < 1500; y += 100) {
     for (let x = mySmoke.x; x < 1550; x += 20) {
       // Scale input coordinates.
@@ -60,7 +60,7 @@ function smokeVertical() {
       // Render.
       stroke(c);
       point(x, y);
-      stroke(255, 0, 0);
+      stroke(255, c, c);
       let circleX = x;
       let circleY = y;
       noFill();
@@ -69,7 +69,7 @@ function smokeVertical() {
   }
 }
 function smokeHorizontal() {
-  let mySmoke = new smokeStatus(0, 0, 500, 5, 7);
+  let mySmoke = new smokeStatus(0, 0, 500, 5, 10);
   for (let y = mySmoke.y; y < 1500; y += 10) {
     for (let x = mySmoke.x; x < 1550; x += 100) {
       // Scale input coordinates.
