@@ -57,16 +57,16 @@ function draw() {
 
 function keyPressed(){
   if (key==='1'){
-    smokeVisible = false;
+    smokeVisible =! smokeVisible;
   }
   else if (key==='2'){
-    smoke2Visible = false;
+    smoke2Visible =! smoke2Visible;
   }
   else if (key==='3'){
-    smoke3Visible = false;
+    smoke3Visible =! smoke3Visible;
   }
   else if (key==='4'){
-    smoke4Visible = false;
+    smoke4Visible =! smoke4Visible;
   }
   else if (key ==='r'){
     location.reload();
@@ -176,7 +176,7 @@ function smoke4() {
 
 function drawBackground() {
   background(51);
-  let s = "press number 1-4 to open the gate and make wave flow faster,\n press r to reload and start again"
+  let s = "press number 1-4 to open the gate and make wave flow faster,\n press again to close gate, \n press r to reload and start again"
   textSize(50);
   fill(0, 230, 255);
   text(s, windowWidth / 2, windowHeight / 2);
