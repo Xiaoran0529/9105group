@@ -114,8 +114,8 @@ function drawBackground() {
   }
   // increment y dimension for noise
   yoff += 0.01;
-  vertex(width, height);
-  vertex(0, height);
+  vertex(windowWidth, windowHeight);
+  vertex(0, windowHeight);
   endShape(CLOSE);
 }
 
