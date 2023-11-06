@@ -47,16 +47,16 @@ class smokeStatus {
 
 }
 function smokeVertical() {
-  let mySmoke2 = new smokeStatus(0, 0, 500, 5, 5);
-  for (let y = mySmoke2.y; y < 1500; y += 50) {
-    for (let x = mySmoke2.x; x < 1550; x += 20) {
+  let mySmoke = new smokeStatus(0, 0, 500, 5, 5);
+  for (let y = mySmoke.y; y < 1500; y += 100) {
+    for (let x = mySmoke.x; x < 1550; x += 20) {
       // Scale input coordinates.
-      let nx = mySmoke2.noiseScale * x;
-      let ny = mySmoke2.noiseScale * y;
+      let nx = mySmoke.noiseScale * x;
+      let ny = mySmoke.noiseScale * y;
       // Compute noise value.
-      let nt = mySmoke2.noiseScale * frameCount;
+      let nt = mySmoke.noiseScale * frameCount;
       // Compute noise value.
-      let c = mySmoke2.noiseLevel * noise(nx, ny, nt);
+      let c = mySmoke.noiseLevel * noise(nx, ny, nt);
       // Render.
       stroke(c);
       point(x, y);
@@ -64,21 +64,21 @@ function smokeVertical() {
       let circleX = x;
       let circleY = y;
       noFill();
-      ellipse(circleX, circleY, mySmoke2.radius * 5, mySmoke2.radius * 5)
+      ellipse(circleX, circleY, mySmoke.radius * 5, mySmoke.radius * 5)
     }
   }
 }
 function smokeHorizontal() {
-  let mySmoke2 = new smokeStatus(0, 0, 500, 5, 3);
-  for (let y = mySmoke2.y; y < 1500; y += 10) {
-    for (let x = mySmoke2.x; x < 1550; x += 50) {
+  let mySmoke = new smokeStatus(0, 0, 500, 5, 7);
+  for (let y = mySmoke.y; y < 1500; y += 10) {
+    for (let x = mySmoke.x; x < 1550; x += 100) {
       // Scale input coordinates.
-      let nx = mySmoke2.noiseScale * x;
-      let ny = mySmoke2.noiseScale * y;
+      let nx = mySmoke.noiseScale * x;
+      let ny = mySmoke.noiseScale * y;
       // Compute noise value.
-      let nt = mySmoke2.noiseScale * frameCount;
+      let nt = mySmoke.noiseScale * frameCount;
       // Compute noise value.
-      let c = mySmoke2.noiseLevel * noise(nx, ny, nt);
+      let c = mySmoke.noiseLevel * noise(nx, ny, nt);
       // Render.
       stroke(c);
       point(x, y);
@@ -86,7 +86,7 @@ function smokeHorizontal() {
       let circleX = x;
       let circleY = y;
       noFill();
-      ellipse(circleX, circleY, mySmoke2.radius * 5, mySmoke2.radius * 5)
+      ellipse(circleX, circleY, mySmoke.radius * 5, mySmoke.radius * 5)
     }
   }
 }
