@@ -4,6 +4,7 @@ let size;
 let yoff = 0.0;
 let yh = 900;
 let xh = 1300;
+let smokeVisible = true
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -20,15 +21,18 @@ function draw() {
   // draw wave;
   drawBackground();
   // draw smoke;
-  smokeHorizontal();
-  smokeHorizontal2();
-  smokeHorizontal3();
-  smokeHorizontal4();
-  smokeHorizontal5();
+  if (smokeVisible) {
+    smokeHorizontal();
+    smokeHorizontal2();
+    smokeHorizontal3();
+    smokeHorizontal4();
+    smokeHorizontal5();
+
+  }
   smokeVertical();
   smokeVertical2();
-  smokeVertical3()
-  
+  smokeVertical3();
+
 
 
 
@@ -41,10 +45,13 @@ function draw() {
   //change xh and yh every frame to make it an animation 
   yh -= 1;
   xh -= 1;
+  if (mouseIsPressed) {
+    smokeVisible = false;
+  }
 }
 
 class smokeStatus {
-  constructor(x, y, noiseLevel, noiseScale, width,height) {
+  constructor(x, y, noiseLevel, noiseScale, width, height) {
     this.x = x;
     this.y = y;
     this.noiseLevel = noiseLevel;
@@ -56,7 +63,7 @@ class smokeStatus {
 
 }
 function smokeHorizontal() {
-  let mySmoke = new smokeStatus(0, 0, 500, 5, 10,30);
+  let mySmoke = new smokeStatus(0, 0, 500, 5, 10, 30);
   for (let y = mySmoke.y; y < 200; y += 100) {
     for (let x = mySmoke.x; x < 1550; x += 10) {
       // Scale input coordinates.
@@ -78,7 +85,7 @@ function smokeHorizontal() {
   }
 }
 function smokeHorizontal2() {
-  let mySmoke = new smokeStatus(0, 300, 500, 5, 10,30);
+  let mySmoke = new smokeStatus(0, 300, 500, 5, 10, 30);
   for (let y = mySmoke.y; y < 500; y += 100) {
     for (let x = mySmoke.x; x < 1550; x += 10) {
       // Scale input coordinates.
@@ -100,7 +107,7 @@ function smokeHorizontal2() {
   }
 }
 function smokeHorizontal3() {
-  let mySmoke = new smokeStatus(0, 530, 500, 5, 10,30);
+  let mySmoke = new smokeStatus(0, 530, 500, 5, 10, 30);
   for (let y = mySmoke.y; y < 900; y += 100) {
     for (let x = mySmoke.x; x < 1550; x += 10) {
       // Scale input coordinates.
@@ -122,7 +129,7 @@ function smokeHorizontal3() {
   }
 }
 function smokeHorizontal4() {
-  let mySmoke = new smokeStatus(0, 950, 500, 5, 10,30);
+  let mySmoke = new smokeStatus(0, 950, 500, 5, 10, 30);
   for (let y = mySmoke.y; y < 1150; y += 100) {
     for (let x = mySmoke.x; x < 500; x += 10) {
       // Scale input coordinates.
@@ -144,7 +151,7 @@ function smokeHorizontal4() {
   }
 }
 function smokeHorizontal5() {
-  let mySmoke = new smokeStatus(0, 1150, 500, 5, 10,30);
+  let mySmoke = new smokeStatus(0, 1150, 500, 5, 10, 30);
   for (let y = mySmoke.y; y < 1500; y += 100) {
     for (let x = mySmoke.x; x < 1500; x += 10) {
       // Scale input coordinates.
@@ -166,7 +173,7 @@ function smokeHorizontal5() {
   }
 }
 function smokeVertical() {
-  let mySmoke = new smokeStatus(0, 0, 500, 5, 50,10);
+  let mySmoke = new smokeStatus(0, 0, 500, 5, 50, 10);
   for (let y = mySmoke.y; y < 1500; y += 10) {
     for (let x = mySmoke.x; x < 400; x += 100) {
       // Scale input coordinates.
@@ -183,12 +190,12 @@ function smokeVertical() {
       let rectX = x;
       let rectleY = y;
       noFill();
-      rect(rectX, rectleY, mySmoke.width , mySmoke.height * 10)
+      rect(rectX, rectleY, mySmoke.width, mySmoke.height * 10)
     }
   }
 }
 function smokeVertical2() {
-  let mySmoke = new smokeStatus(800, 0, 500, 5, 50,10);
+  let mySmoke = new smokeStatus(800, 0, 500, 5, 50, 10);
   for (let y = mySmoke.y; y < 1500; y += 10) {
     for (let x = mySmoke.x; x < 950; x += 100) {
       // Scale input coordinates.
@@ -205,12 +212,12 @@ function smokeVertical2() {
       let rectX = x;
       let rectleY = y;
       noFill();
-      rect(rectX, rectleY, mySmoke.width , mySmoke.height * 10)
+      rect(rectX, rectleY, mySmoke.width, mySmoke.height * 10)
     }
   }
 }
 function smokeVertical3() {
-  let mySmoke = new smokeStatus(1250, 0, 500, 5, 50,10);
+  let mySmoke = new smokeStatus(1250, 0, 500, 5, 50, 10);
   for (let y = mySmoke.y; y < 1500; y += 10) {
     for (let x = mySmoke.x; x < 1500; x += 100) {
       // Scale input coordinates.
@@ -227,7 +234,7 @@ function smokeVertical3() {
       let rectX = x;
       let rectleY = y;
       noFill();
-      rect(rectX, rectleY, mySmoke.width , mySmoke.height * 10)
+      rect(rectX, rectleY, mySmoke.width, mySmoke.height * 10)
     }
   }
 }
@@ -236,6 +243,10 @@ function smokeVertical3() {
 
 function drawBackground() {
   background(51);
+  let s="click canvus to open the gate and make wave flow faster"
+  textSize(50);
+  fill(0, 230, 255);
+  text(s,windowWidth*0.5,windowHeight/2);
   //wave color
   fill(0, 230, 255);
   //draw a polygon out of the wave points
@@ -275,7 +286,7 @@ class element {
 
 function createElements() {
 
-  
+
 
   // red rect column1
   let column1_x = [18 / 800 * size, 18 / 800 * size, 16 / 800 * size, 18 / 800 * size, 20 / 800 * size, 20 / 800 * size, 20 / 800 * size, 16 / 800 * size, 16 / 800 * size, 16 / 800 * size, 18 / 800 * size];
