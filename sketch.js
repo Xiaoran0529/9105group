@@ -62,7 +62,7 @@ function smokeHorizontal() {
       // Render.
       stroke(c);
       point(x, y);
-      stroke(100, c, c);
+      stroke(255, c, c);
       let rectX = x;
       let rectleY = y;
       noFill();
@@ -98,7 +98,7 @@ function smokeVertical() {
 function drawBackground() {
   background(51);
   //wave color
-  fill(0, 230, 255);
+  fill(0, 100, 255);
   //draw a polygon out of the wave points
   beginShape();
   let xoff = 0;
