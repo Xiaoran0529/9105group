@@ -98,7 +98,7 @@ function smokeVertical() {
 function drawBackground() {
   background(51);
   //wave color
-  fill(0, 150, 255);
+  fill(0, 230, 255);
   //draw a polygon out of the wave points
   beginShape();
   let xoff = 0;
