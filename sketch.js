@@ -21,7 +21,14 @@ function draw() {
   drawBackground();
   // draw smoke;
   smokeHorizontal();
+  smokeHorizontal2();
+  smokeHorizontal3();
+  smokeHorizontal4();
+  smokeHorizontal5();
   smokeVertical();
+  smokeVertical2();
+  smokeVertical3()
+  
 
 
 
@@ -50,8 +57,96 @@ class smokeStatus {
 }
 function smokeHorizontal() {
   let mySmoke = new smokeStatus(0, 0, 500, 5, 10,30);
-  for (let y = mySmoke.y; y < 1500; y += 100) {
+  for (let y = mySmoke.y; y < 200; y += 100) {
     for (let x = mySmoke.x; x < 1550; x += 10) {
+      // Scale input coordinates.
+      let nx = mySmoke.noiseScale * x;
+      let ny = mySmoke.noiseScale * y;
+      // Compute noise value.
+      let nt = mySmoke.noiseScale * frameCount;
+      // Compute noise value.
+      let c = mySmoke.noiseLevel * noise(nx, ny, nt);
+      // Render.
+      stroke(c);
+      point(x, y);
+      stroke(255, c, c);
+      let rectX = x;
+      let rectleY = y;
+      noFill();
+      rect(rectX, rectleY, mySmoke.width * 10, mySmoke.height)
+    }
+  }
+}
+function smokeHorizontal2() {
+  let mySmoke = new smokeStatus(0, 300, 500, 5, 10,30);
+  for (let y = mySmoke.y; y < 500; y += 100) {
+    for (let x = mySmoke.x; x < 1550; x += 10) {
+      // Scale input coordinates.
+      let nx = mySmoke.noiseScale * x;
+      let ny = mySmoke.noiseScale * y;
+      // Compute noise value.
+      let nt = mySmoke.noiseScale * frameCount;
+      // Compute noise value.
+      let c = mySmoke.noiseLevel * noise(nx, ny, nt);
+      // Render.
+      stroke(c);
+      point(x, y);
+      stroke(255, c, c);
+      let rectX = x;
+      let rectleY = y;
+      noFill();
+      rect(rectX, rectleY, mySmoke.width * 10, mySmoke.height)
+    }
+  }
+}
+function smokeHorizontal3() {
+  let mySmoke = new smokeStatus(0, 700, 500, 5, 10,30);
+  for (let y = mySmoke.y; y < 1000; y += 100) {
+    for (let x = mySmoke.x; x < 1550; x += 10) {
+      // Scale input coordinates.
+      let nx = mySmoke.noiseScale * x;
+      let ny = mySmoke.noiseScale * y;
+      // Compute noise value.
+      let nt = mySmoke.noiseScale * frameCount;
+      // Compute noise value.
+      let c = mySmoke.noiseLevel * noise(nx, ny, nt);
+      // Render.
+      stroke(c);
+      point(x, y);
+      stroke(255, c, c);
+      let rectX = x;
+      let rectleY = y;
+      noFill();
+      rect(rectX, rectleY, mySmoke.width * 10, mySmoke.height)
+    }
+  }
+}
+function smokeHorizontal4() {
+  let mySmoke = new smokeStatus(0, 1000, 500, 5, 10,30);
+  for (let y = mySmoke.y; y < 1150; y += 100) {
+    for (let x = mySmoke.x; x < 500; x += 10) {
+      // Scale input coordinates.
+      let nx = mySmoke.noiseScale * x;
+      let ny = mySmoke.noiseScale * y;
+      // Compute noise value.
+      let nt = mySmoke.noiseScale * frameCount;
+      // Compute noise value.
+      let c = mySmoke.noiseLevel * noise(nx, ny, nt);
+      // Render.
+      stroke(c);
+      point(x, y);
+      stroke(255, c, c);
+      let rectX = x;
+      let rectleY = y;
+      noFill();
+      rect(rectX, rectleY, mySmoke.width * 10, mySmoke.height)
+    }
+  }
+}
+function smokeHorizontal5() {
+  let mySmoke = new smokeStatus(0, 1150, 500, 5, 10,30);
+  for (let y = mySmoke.y; y < 1500; y += 100) {
+    for (let x = mySmoke.x; x < 1500; x += 10) {
       // Scale input coordinates.
       let nx = mySmoke.noiseScale * x;
       let ny = mySmoke.noiseScale * y;
@@ -73,7 +168,51 @@ function smokeHorizontal() {
 function smokeVertical() {
   let mySmoke = new smokeStatus(0, 0, 500, 5, 50,10);
   for (let y = mySmoke.y; y < 1500; y += 10) {
-    for (let x = mySmoke.x; x < 1550; x += 100) {
+    for (let x = mySmoke.x; x < 300; x += 100) {
+      // Scale input coordinates.
+      let nx = mySmoke.noiseScale * x;
+      let ny = mySmoke.noiseScale * y;
+      // Compute noise value.
+      let nt = mySmoke.noiseScale * frameCount;
+      // Compute noise value.
+      let c = mySmoke.noiseLevel * noise(nx, ny, nt);
+      // Render.
+      stroke(c);
+      point(x, y);
+      stroke(c, c, 0);
+      let rectX = x;
+      let rectleY = y;
+      noFill();
+      rect(rectX, rectleY, mySmoke.width , mySmoke.height * 10)
+    }
+  }
+}
+function smokeVertical2() {
+  let mySmoke = new smokeStatus(700, 0, 500, 5, 50,10);
+  for (let y = mySmoke.y; y < 1500; y += 10) {
+    for (let x = mySmoke.x; x < 900; x += 100) {
+      // Scale input coordinates.
+      let nx = mySmoke.noiseScale * x;
+      let ny = mySmoke.noiseScale * y;
+      // Compute noise value.
+      let nt = mySmoke.noiseScale * frameCount;
+      // Compute noise value.
+      let c = mySmoke.noiseLevel * noise(nx, ny, nt);
+      // Render.
+      stroke(c);
+      point(x, y);
+      stroke(c, c, 0);
+      let rectX = x;
+      let rectleY = y;
+      noFill();
+      rect(rectX, rectleY, mySmoke.width , mySmoke.height * 10)
+    }
+  }
+}
+function smokeVertical3() {
+  let mySmoke = new smokeStatus(1250, 0, 500, 5, 50,10);
+  for (let y = mySmoke.y; y < 1500; y += 10) {
+    for (let x = mySmoke.x; x < 1500; x += 100) {
       // Scale input coordinates.
       let nx = mySmoke.noiseScale * x;
       let ny = mySmoke.noiseScale * y;
