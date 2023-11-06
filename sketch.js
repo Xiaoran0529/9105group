@@ -24,15 +24,15 @@ function draw() {
   // draw wave;
   drawBackground();
   // draw smoke;
-  smoke();
-  smoke2();
-  smoke3();
-  smoke4();
-  smoke5();
+  //smoke();
+  //smoke2();
+  //smoke3();
+  //smoke4();
+  //smoke5();
   smoke6();
   smoke7();
-  smoke8();
-  smoke9();
+  //smoke8();
+  //smoke9();
 
 
 
@@ -124,9 +124,9 @@ function smoke2() {
   }
 }
 function smoke6() {
-  let mySmoke2 = new smokeStatus(1100, 270, 1000, 5, 3);
-  for (let y = mySmoke2.y; y < 530; y += 50) {
-    for (let x = mySmoke2.x; x < 1270; x += 50) {
+  let mySmoke2 = new smokeStatus(0, 0, 200, 5, 3);
+  for (let y = mySmoke2.y; y < 1500; y += 50) {
+    for (let x = mySmoke2.x; x < 1550; x += 10) {
       // Scale input coordinates.
       let nx = mySmoke2.noiseScale * x;
       let ny = mySmoke2.noiseScale * y;
@@ -137,7 +137,7 @@ function smoke6() {
       // Render.
       stroke(c);
       point(x, y);
-      stroke(50, c, 10);
+      stroke(255, c, 255);
       let circleX = x;
       let circleY = y;
       noFill();
@@ -146,9 +146,9 @@ function smoke6() {
   }
 }
 function smoke7() {
-  let mySmoke2 = new smokeStatus(900, 270, 100, 5, 3);
-  for (let y = mySmoke2.y; y < 530; y += 50) {
-    for (let x = mySmoke2.x; x < 970; x += 50) {
+  let mySmoke2 = new smokeStatus(0, 0, 200, 5, 3);
+  for (let y = mySmoke2.y; y < 1500; y += 10) {
+    for (let x = mySmoke2.x; x < 1550; x += 50) {
       // Scale input coordinates.
       let nx = mySmoke2.noiseScale * x;
       let ny = mySmoke2.noiseScale * y;
@@ -159,7 +159,7 @@ function smoke7() {
       // Render.
       stroke(c);
       point(x, y);
-      stroke(300, 100, 150);
+      stroke(255, 255, 0);
       let circleX = x;
       let circleY = y;
       noFill();
@@ -168,95 +168,6 @@ function smoke7() {
   }
 }
 
-function smoke3() {
-  let mySmoke2 = new smokeStatus(900, 970, 255, 0.3, 7);
-  for (let y = mySmoke2.y; y < 1300; y += 20) {
-    for (let x = mySmoke2.x; x < 1280; x += 10) {
-      // Scale input coordinates.
-      let nx = mySmoke2.noiseScale * x;
-      let ny = mySmoke2.noiseScale * y;
-      // Compute noise value.
-      let nt = mySmoke2.noiseScale * frameCount;
-      // Compute noise value.
-      let c = mySmoke2.noiseLevel * noise(nx, ny, nt);
-      // Render.
-      stroke(c);
-      point(x, y);
-      stroke(c, 0, 255);
-      let circleX = x;
-      let circleY = y;
-      noFill();
-      ellipse(circleX, circleY, mySmoke2.radius * 5, mySmoke2.radius * 5)
-    }
-  }
-}
-function smoke8() {
-  let mySmoke2 = new smokeStatus(900, 1300, 255, 0.3, 7);
-  for (let y = mySmoke2.y; y < 1430; y += 50) {
-    for (let x = mySmoke2.x; x < 1280; x += 10) {
-      // Scale input coordinates.
-      let nx = mySmoke2.noiseScale * x;
-      let ny = mySmoke2.noiseScale * y;
-      // Compute noise value.
-      let nt = mySmoke2.noiseScale * frameCount;
-      // Compute noise value.
-      let c = mySmoke2.noiseLevel * noise(nx, ny, nt);
-      // Render.
-      stroke(c);
-      point(x, y);
-      stroke(c, 155, 50);
-      let circleX = x;
-      let circleY = y;
-      noFill();
-      ellipse(circleX, circleY, mySmoke2.radius * 5, mySmoke2.radius * 5)
-    }
-  }
-}
-function smoke9() {
-  let mySmoke2 = new smokeStatus(350, 1300, 255, 0.3, 7);
-  for (let y = mySmoke2.y; y < 1430; y += 30) {
-    for (let x = mySmoke2.x; x < 800; x += 10) {
-      // Scale input coordinates.
-      let nx = mySmoke2.noiseScale * x;
-      let ny = mySmoke2.noiseScale * y;
-      // Compute noise value.
-      let nt = mySmoke2.noiseScale * frameCount;
-      // Compute noise value.
-      let c = mySmoke2.noiseLevel * noise(nx, ny, nt);
-      // Render.
-      stroke(c);
-      point(x, y);
-      stroke(c, 155, c);
-      let circleX = x;
-      let circleY = y;
-      noFill();
-      ellipse(circleX, circleY, mySmoke2.radius * 5, mySmoke2.radius * 5)
-    }
-  }
-}
-
-function smoke4() {
-  let mySmoke2 = new smokeStatus(350, 870, 255, 0.3, 7);
-  for (let y = mySmoke2.y; y < 1300; y += 10) {
-    for (let x = mySmoke2.x; x < 800; x += 20) {
-      // Scale input coordinates.
-      let nx = mySmoke2.noiseScale * x;
-      let ny = mySmoke2.noiseScale * y;
-      // Compute noise value.
-      let nt = mySmoke2.noiseScale * frameCount;
-      // Compute noise value.
-      let c = mySmoke2.noiseLevel * noise(nx, ny, nt);
-      // Render.
-      stroke(c);
-      point(x, y);
-      stroke(c, 0, c);
-      let circleX = x;
-      let circleY = y;
-      noFill();
-      ellipse(circleX, circleY, mySmoke2.radius * 5, mySmoke2.radius * 5)
-    }
-  }
-}
 
 
 function drawBackground() {
@@ -300,35 +211,7 @@ class element {
 
 function createElements() {
 
-  //Window width horizontal yellow strips
-  let p = new element(0, 18 / 800 * size, size, 15 / 800 * size, "#E8D135");
-  elementList.push(p);
-
-  let horizontalStrip = [122 / 800 * size, 277 / 800 * size, 343 / 800 * size, 447 / 800 * size, 500 / 800 * size];
-  for (let a = 0; a < horizontalStrip.length; a++) {
-    elementList.push(new element(0, horizontalStrip[a], size, 20 / 800 * size, "#E8D135"))
-  }
-  //blue,row 3, column 7
-  elementList.push(new element(230 / 800 * size, 363 / 800 * size, 70 / 800 * size, 84 / 800 * size, "#4468BC"));
-  let yellow_y = [545 / 800 * size, 618 / 800 * size, 705 / 800 * size, 680 / 800 * size, 755 / 800 * size];
-  let yellow_w = [45 / 800 * size, 45 / 800 * size, 45 / 800 * size, size, size];
-  let yellow_h = [20 / 800 * size, 20 / 800 * size, 20 / 800 * size, 16 / 800 * size, 16 / 800 * size];
-  for (let m = 0; m < yellow_y.length; m++) {
-    elementList.push(new element(0, yellow_y[m], yellow_w[m], yellow_h[m], "#E8D135"))
-  }
-
-  //Window height vertical yellow strips
-  let verticalStrip = [45 / 800 * size, 178 / 800 * size, 429 / 800 * size, 462 / 800 * size, 672 / 800 * size]
-  for (let b = 0; b < verticalStrip.length; b++) {
-    elementList.push(new element(verticalStrip[b], 0, 16 / 800 * size, size, "#E8D135"))
-  }
-
-  let list_x = [18 / 800 * size, 92 / 800 * size, 702 / 800 * size, 740 / 800 * size, 740 / 800 * size, 740 / 800 * size, 768 / 800 * size];
-  let list_y = [0, 0, 0, 0, 123 / 800 * size, 500 / 800 * size, 0];
-  let list_h = [278 / 800 * size, 770 / 800 * size, 297 / 800 * size, 81 / 800 * size, 236 / 800 * size, 155 / 800 * size, size];
-  for (let k = 0; k < list_y.length; k++) {
-    elementList.push(new element(list_x[k], list_y[k], 16, list_h[k], "#E8D135"))
-  }
+  
 
   // red rect column1
   let column1_x = [18 / 800 * size, 18 / 800 * size, 16 / 800 * size, 18 / 800 * size, 20 / 800 * size, 20 / 800 * size, 20 / 800 * size, 16 / 800 * size, 16 / 800 * size, 16 / 800 * size, 18 / 800 * size];
