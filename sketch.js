@@ -100,8 +100,8 @@ function smokeHorizontal2() {
   }
 }
 function smokeHorizontal3() {
-  let mySmoke = new smokeStatus(0, 700, 500, 5, 10,30);
-  for (let y = mySmoke.y; y < 1000; y += 100) {
+  let mySmoke = new smokeStatus(0, 530, 500, 5, 10,30);
+  for (let y = mySmoke.y; y < 900; y += 100) {
     for (let x = mySmoke.x; x < 1550; x += 10) {
       // Scale input coordinates.
       let nx = mySmoke.noiseScale * x;
@@ -122,7 +122,7 @@ function smokeHorizontal3() {
   }
 }
 function smokeHorizontal4() {
-  let mySmoke = new smokeStatus(0, 1000, 500, 5, 10,30);
+  let mySmoke = new smokeStatus(0, 950, 500, 5, 10,30);
   for (let y = mySmoke.y; y < 1150; y += 100) {
     for (let x = mySmoke.x; x < 500; x += 10) {
       // Scale input coordinates.
@@ -168,7 +168,7 @@ function smokeHorizontal5() {
 function smokeVertical() {
   let mySmoke = new smokeStatus(0, 0, 500, 5, 50,10);
   for (let y = mySmoke.y; y < 1500; y += 10) {
-    for (let x = mySmoke.x; x < 500; x += 100) {
+    for (let x = mySmoke.x; x < 400; x += 100) {
       // Scale input coordinates.
       let nx = mySmoke.noiseScale * x;
       let ny = mySmoke.noiseScale * y;
@@ -188,9 +188,9 @@ function smokeVertical() {
   }
 }
 function smokeVertical2() {
-  let mySmoke = new smokeStatus(700, 0, 500, 5, 50,10);
+  let mySmoke = new smokeStatus(800, 0, 500, 5, 50,10);
   for (let y = mySmoke.y; y < 1500; y += 10) {
-    for (let x = mySmoke.x; x < 900; x += 100) {
+    for (let x = mySmoke.x; x < 950; x += 100) {
       // Scale input coordinates.
       let nx = mySmoke.noiseScale * x;
       let ny = mySmoke.noiseScale * y;
