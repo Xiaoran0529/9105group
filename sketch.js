@@ -4,7 +4,6 @@ let size;
 let yoff = 0.0;
 let yh = 900;
 let xh = 1300;
-let smokeVisible = true
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
