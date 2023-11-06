@@ -42,9 +42,6 @@ function draw() {
   //change xh and yh every frame to make it an animation 
   yh -= 1;
   xh -= 1;
-  if (mouseIsPressed) {
-    smokeVisible = false;
-  }
 }
 
 class smokeStatus {
@@ -235,9 +232,6 @@ function smokeVertical3() {
     }
   }
 }
-
-
-
 function wave() {
   background(51);
   //wave color
