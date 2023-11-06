@@ -19,7 +19,7 @@ function draw() {
   rect(0, 0, size, size);
   noStroke();
   // draw wave;
-  drawBackground();
+  wave();
   // draw smoke;
   if (smokeVisible) {
     smokeHorizontal();
@@ -46,7 +46,7 @@ function draw() {
   yh -= 1;
   xh -= 1;
   if (mouseIsPressed) {
-    smokeVisible = false;
+    smokeVisible = false; 
   }
 }
 
@@ -241,12 +241,8 @@ function smokeVertical3() {
 
 
 
-function drawBackground() {
+function wave() {
   background(51);
-  let s="click canvus to open the gate and make wave flow faster"
-  textSize(50);
-  fill(0, 230, 255);
-  text(s,windowWidth*0.5,windowHeight/2);
   //wave color
   fill(0, 230, 255);
   //draw a polygon out of the wave points
