@@ -4,13 +4,13 @@ let size;
 let yoff = 0.0;
 let yh = 900;
 let xh = 1300;
-let smokeVisible = true;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  size = windowWidth < windowHeight ? windowWidth : windowHeight;
+  size = min(windowWidth, windowHeight);
   createElements();
 }
+
 
 function draw() {
   background(225);
@@ -21,13 +21,11 @@ function draw() {
   // draw wave;
   wave();
   // draw smoke;
-  if (smokeVisible) {
-    smokeHorizontal();
-    smokeHorizontal2();
-    smokeHorizontal3();
-    smokeHorizontal4();
-    smokeHorizontal5();
-  }
+  smokeHorizontal();
+  smokeHorizontal2();
+  smokeHorizontal3();
+  smokeHorizontal4();
+  smokeHorizontal5();
   smokeVertical();
   smokeVertical2();
   smokeVertical3();
@@ -38,9 +36,7 @@ function draw() {
   //change xh and yh every frame to make it an animation 
   yh -= 1;
   xh -= 1;
-  if (mouseIsPressed) {
-    smokeVisible = false;
-  }
+
 }
 
 class smokeStatus {
@@ -69,7 +65,7 @@ function smokeHorizontal() {
       // Render.
       stroke(c);
       point(x, y);
-      stroke(255, c, c);
+      stroke(random(255), random(255), c);
       let rectX = x;
       let rectleY = y;
       noFill();
@@ -91,7 +87,7 @@ function smokeHorizontal2() {
       // Render.
       stroke(c);
       point(x, y);
-      stroke(255, c, c);
+      stroke(255, c, random(c));
       let rectX = x;
       let rectleY = y;
       noFill();
@@ -113,7 +109,7 @@ function smokeHorizontal3() {
       // Render.
       stroke(c);
       point(x, y);
-      stroke(255, c, c);
+      stroke(255, random(c), random(c));
       let rectX = x;
       let rectleY = y;
       noFill();
@@ -135,7 +131,7 @@ function smokeHorizontal4() {
       // Render.
       stroke(c);
       point(x, y);
-      stroke(255, c, c);
+      stroke(255, c, random(c));
       let rectX = x;
       let rectleY = y;
       noFill();
@@ -157,7 +153,7 @@ function smokeHorizontal5() {
       // Render.
       stroke(c);
       point(x, y);
-      stroke(255, c, c);
+      stroke(random(c), c, random(c));
       let rectX = x;
       let rectleY = y;
       noFill();
@@ -233,10 +229,6 @@ function smokeVertical3() {
 }
 function wave() {
   background(51);
-  let s="click canvus to open the gate and make wave flow faster"
-  textSize(50);
-  fill(0, 230, 255);
-  text(s,windowWidth*0.5,windowHeight/2);
   //wave color
   fill(0, 230, 255);
   //draw a polygon out of the wave points
