@@ -28,12 +28,6 @@ function draw() {
   smokeVertical();
   smokeVertical2();
   smokeVertical3();
-
-
-
-
-
-
   // draw elements
   for (let i = 0; i < elementList.length; i++) {
     elementList[i].display();
