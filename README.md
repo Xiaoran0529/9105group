@@ -1,2 +1,5 @@
-# 9105group
-// this is our group project
+# 9103 TUT1 groupC
+
+// Risheng's branch - Time-based
+
+// Press mouse to speed uuuup!
