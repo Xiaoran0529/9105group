@@ -80,6 +80,13 @@ class element {
   }
 }
 
+
+
+function creat2Element(x, y, width, height, color) {
+  return new element(x / 800 * size, y / 800 * size, width / 800 * size, height / 800 * size, color);
+}
+
+
 function creatElements() {
 
   //Window width horizontal yellow strips
@@ -121,16 +128,138 @@ function creatElements() {
   for (let n = 0; n < column1_y.length; n++) {
     elementList.push(new element(column1_x[n], column1_y[n], column1_w[n], column1_h[n], column1_col[n]))
   }
-  //blue,row 2, column 10
-  elementList.push(new element(510 / 800 * size, 140/ 800 * size, 100 / 800 * size, 138 / 800 * size, "#4468BC"));
-  //grey,row 2, column 1
-  elementList.push(new element(17 / 800 * size, 40/ 800 * size, 10 / 800 * size, 10 / 800 * size, "#D5D5D0"));
-  //grey,row 3, column 1
-  elementList.push(new element(17 / 800 * size, 260/ 800 * size, 10 / 800 * size, 10 / 800 * size, "#D5D5D0"));
-  //grey,row 2, column 1
-  elementList.push(new element(45 / 800 * size, 520/ 800 * size, 20 / 800 * size, 20 / 800 * size, "#D5D5D0"));
-  //grey,row 3, column 1
-  elementList.push(new element(45/ 800 * size, 300/ 800 * size, 20 / 800 * size, 20 / 800 * size, "#D5D5D0"));
+
+
+  const elements = [
+    {x: 230, y: 363, width: 70, height: 84, color: "#4468BC"},
+    {x: 510, y: 140, width: 100, height: 138, color: "#4468BC"},
+    {x: 17, y: 40, width: 10, height: 10, color: "#D5D5D0"},
+    {x: 17, y: 260, width: 10, height: 10, color: "#D5D5D0"},
+    {x: 45, y: 520, width: 20, height: 20, color: "#D5D5D0"},
+    {x: 45, y: 300, width: 20, height: 20, color: "#D5D5D0"},
+    {x: 45, y: 548, width: 16, height: 12, color: "#A7392C"},
+    {x: 45, y: 548, width: 16, height: 12, color: "#A7392C"},
+    {x: 45, y: 277, width: 16, height: 20, color: "#4468BC"},
+    {x: 45, y: 345, width: 17, height: 17, color: "#4468BC"},
+    {x: 45, y: 447, width: 17, height: 20, color: "#4468BC"},
+    {x: 45, y: 680, width: 17, height: 17, color: "#4468BC"},
+    {x: 45, y: 260, width: 15, height: 20, color: "#D5D5D0"},
+    {x: 45, y: 100, width: 15, height: 20, color: "#D5D5D0"},
+    {x: 45, y: 650, width: 15, height: 20, color: "#D5D5D0"},
+    {x: 92, y: 342, width: 16, height: 20, color: "#A7392C"},
+    {x: 92, y: 122, width: 20, height: 20, color: "#4468BC"},
+    {x: 60, y: 142, width: 50, height: 50, color: "#4468BC"},
+    {x: 92, y: 260, width: 10, height: 10, color: "#4468BC"},
+    {x: 92, y: 295, width: 10, height: 10, color: "#4468BC"},
+    {x: 92, y: 400, width: 10, height: 10, color: "#4468BC"},
+    {x: 92, y: 447, width: 10, height: 20, color: "#4468BC"},
+    {x: 92, y: 500, width: 10, height: 20, color: "#4468BC"},
+    {x: 62, y: 539, width: 31, height: 40, color: "#4468BC"},
+    {x: 92, y: 635, width: 10, height: 10, color: "#4468BC"},
+    {x: 92, y: 680, width: 15, height: 15, color: "#4468BC"},
+    {x: 92, y: 700, width: 10, height: 10, color: "#4468BC"},
+    {x: 92, y: 755, width: 10, height: 15, color: "#4468BC"},
+    {x: 92, y: 680, width: 17, height: 17, color: "#4468BC"},
+    {x: 92, y: 200, width: 15, height: 20, color: "#D5D5D0"},
+    {x: 92, y: 370, width: 15, height: 20, color: "#D5D5D0"},
+    {x: 123, y: 70, width: 30, height: 20, color: "#D5D5D0"},
+    {x: 376, y: 122, width: 30, height: 20, color: "#D5D5D0"},
+    {x: 300, y: 15, width: 30, height: 20, color: "#D5D5D0"},
+    {x: 175, y: 15, width: 20, height: 20, color: "#D5D5D0"},
+    {x: 175, y: 230, width: 20, height: 20, color: "#D5D5D0"},
+    {x: 175, y: 320, width: 20, height: 20, color: "#D5D5D0"},
+    {x: 175, y: 400, width: 20, height: 20, color: "#D5D5D0"},
+    {x: 175, y: 500, width: 20, height: 20, color: "#D5D5D0"},
+    {x: 175, y: 600, width: 20, height: 20, color: "#D5D5D0"},
+    {x: 260, y: 680, width: 20, height: 20, color: "#D5D5D0"},
+    {x: 260, y: 500, width: 20, height: 20, color: "#D5D5D0"},
+    {x: 260, y: 400, width: 20, height: 20, color: "#D5D5D0"},
+    {x: 180, y: 65, width: 15, height: 15, color: "#4468BC"},
+    {x: 180, y: 100, width: 15, height: 15, color: "#4468BC"},
+    {x: 180, y: 150, width: 15, height: 15, color: "#4468BC"},
+    {x: 180, y: 275, width: 15, height: 15, color: "#4468BC"},
+    {x: 180, y: 275, width: 15, height: 15, color: "#4468BC"},
+    {x: 180, y: 350, width: 15, height: 15, color: "#4468BC"},
+    {x: 180, y: 450, width: 15, height: 15, color: "#4468BC"},
+    {x: 180, y: 580, width: 15, height: 15, color: "#4468BC"},
+    {x: 180, y: 685, width: 15, height: 15, color: "#4468BC"},
+    {x: 180, y: 755, width: 15, height: 15, color: "#4468BC"},
+    {x: 462, y: 123, width: 16, height: 20, color: "#A7392C"},
+    {x: 200, y: 123, width: 15, height: 15, color: "#4468BC"},
+    {x: 225, y: 280, width: 15, height: 15, color: "#4468BC"},
+    {x: 385, y: 280, width: 15, height: 15, color: "#4468BC"},
+    {x: 385, y: 345, width: 15, height: 15, color: "#4468BC"},
+    {x: 300, y: 580, width: 15, height: 15, color: "#4468BC"},
+    {x: 370, y: 580, width: 15, height: 15, color: "#4468BC"},
+    {x: 320, y: 680, width: 15, height: 15, color: "#4468BC"},
+    {x: 365, y: 680, width: 15, height: 15, color: "#4468BC"},
+    {x: 325, y: 755, width: 15, height: 15, color: "#4468BC"},
+    {x: 345, y: 755, width: 15, height: 15, color: "#4468BC"},
+    {x: 325, y: 343, width: 56, height: 20, color: "#D5D5D0"},
+    {x: 325, y: 379, width: 56, height: 50, color: "#D5D5D0"},
+    {x: 375, y: 500, width: 20, height: 20, color: "#D5D5D0"},
+    {x: 430, y: 65, width: 15, height: 15, color: "#4468BC"},
+    {x: 430, y: 125, width: 15, height: 15, color: "#4468BC"},
+    {x: 430, y: 200, width: 15, height: 15, color: "#4468BC"},
+  
+    {x: 430, y: 300, width: 15, height: 15, color: "#4468BC"},
+    {x: 430, y: 600, width: 15, height: 15, color: "#4468BC"},
+    {x: 430, y: 681, width: 15, height: 15, color: "#4468BC"},
+    {x: 430, y: 100, width: 15, height: 15, color: "#D5D5D0"},
+    {x: 430, y: 30, width: 15, height: 15, color: "#D5D5D0"},
+    {x: 430, y: 230, width: 15, height: 15, color: "#D5D5D0"},
+    {x: 430, y: 345, width: 15, height: 15, color: "#D5D5D0"},
+    {x: 430, y: 450, width: 15, height: 15, color: "#D5D5D0"},
+    {x: 430, y: 500, width: 15, height: 15, color: "#D5D5D0"},
+    {x: 430, y: 620, width: 15, height: 15, color: "#D5D5D0"},
+    {x: 462, y: 123, width: 16, height: 20, color: "#A7392C"},
+    {x: 463, y: 600, width: 15, height: 15, color: "#4468BC"},
+    {x: 463, y: 500, width: 15, height: 15, color: "#4468BC"},
+    {x: 463, y: 300, width: 15, height: 15, color: "#4468BC"},
+    {x: 463, y: 200, width: 15, height: 15, color: "#4468BC"},
+    {x: 463, y: 150, width: 15, height: 15, color: "#D5D5D0"},
+    {x: 463, y: 100, width: 15, height: 15, color: "#D5D5D0"},
+    {x: 463, y: 30, width: 15, height: 15, color: "#D5D5D0"},
+    {x: 463, y: 260, width: 15, height: 15, color: "#D5D5D0"},
+    {x: 463, y: 350, width: 15, height: 15, color: "#D5D5D0"},
+    {x: 463, y: 450, width: 15, height: 15, color: "#D5D5D0"},
+    {x: 463, y: 560, width: 15, height: 15, color: "#D5D5D0"},
+    {x: 560, y: 345, width: 15, height: 20, color: "#4468BC"},
+    {x: 630, y: 450, width: 15, height: 15, color: "#4468BC"},
+    {x: 545, y: 450, width: 15, height: 15, color: "#4468BC"},
+    {x: 625, y: 500, width: 15, height: 18, color: "#4468BC"},
+    {x: 520, y: 500, width: 20, height: 18, color: "#4468BC"},
+    {x: 625, y: 680, width: 15, height: 18, color: "#4468BC"},
+    {x: 520, y: 680, width: 15, height: 15, color: "#4468BC"},
+    {x: 570, y: 400, width: 50, height: 30, color: "#D5D5D0"},
+    {x: 570, y: 447, width: 50, height: 20, color: "#D5D5D0"},
+    {x: 559, y: 483, width: 70, height: 15, color: "#D5D5D0"},
+    {x: 740, y: 346, width: 16, height: 16, color: "#A7392C"},
+    {x: 740, y: 501, width: 16, height: 16, color: "#A7392C"},
+    {x: 740, y: 300, width: 15, height: 15, color: "#4468BC"},
+    {x: 740, y: 450, width: 20, height: 18, color: "#4468BC"},
+    {x: 685, y: 460, width: 50, height: 40, color: "#4468BC"},
+    {x: 720, y: 85, width: 50, height: 30, color: "#4468BC"},
+    {x: 735, y: 640, width: 15, height: 15, color: "#4468BC"},
+    {x: 670, y: 483, width: 15, height: 15, color: "#D5D5D0"},
+    {x: 670, y: 150, width: 15, height: 15, color: "#D5D5D0"},
+    {x: 670, y: 100, width: 15, height: 15, color: "#D5D5D0"},
+    {x: 670, y: 30, width: 15, height: 15, color: "#D5D5D0"},
+    {x: 670, y: 260, width: 15, height: 15, color: "#D5D5D0"},
+    {x: 670, y: 230, width: 15, height: 15, color: "#D5D5D0"},
+    {x: 670, y: 400, width: 15, height: 15, color: "#D5D5D0"},
+    {x: 670, y: 600, width: 15, height: 15, color: "#D5D5D0"},
+    {x: 784, y: 501, width: 16, height: 16, color: "#A7392C"},
+    {x: 92, y: 200, width: 15, height: 50, color: "#D5D5D0"},
+    {x: 123, y: 225, width: 30, height: 20, color: "#D5D5D0"},
+    {x: 128, y: 310, width: 30, height: 20, color: "#D5D5D0"},
+    {x: 130, y: 650, width: 30, height: 20, color: "#D5D5D0"},
+    
+  
+    
+];
+
+elements.forEach(e => elementList.push(creat2Element(e.x, e.y, e.width, e.height, e.color)));
   
 
 
@@ -139,22 +268,7 @@ function creatElements() {
   for (let c = 0; c < column2.length; c++) {
     elementList.push(new element(45 / 800 * size, column2[c], 16 / 800 * size, 16 / 800 * size, "#A7392C"))
   }
-  elementList.push(new element(45 / 800 * size, 548 / 800 * size, 16 / 800 * size, 12 / 800 * size, "#A7392C"));
-  elementList.push(new element(45 / 800 * size, 548 / 800 * size, 16 / 800 * size, 12 / 800 * size, "#A7392C"));
-  //blue,row 3, column 2
-  elementList.push(new element(45 / 800 * size, 277 / 800 * size, 16 / 800 * size, 20 / 800 * size, "#4468BC"));
-  //blue,row 4, column 2
-  elementList.push(new element(45 / 800 * size, 345 / 800 * size, 17 / 800 * size, 17 / 800 * size, "#4468BC"));
-  //blue,row 5, column 2
-  elementList.push(new element(45 / 800 * size, 447 / 800 * size, 17 / 800 * size, 20 / 800 * size, "#4468BC"));
-  //blue,row 9, column 2
-  elementList.push(new element(45 / 800 * size, 680 / 800 * size, 17 / 800 * size, 17 / 800 * size, "#4468BC"));
-  //grey,row 3, column 2
-  elementList.push(new element(45 / 800 * size, 260/ 800 * size, 15 / 800 * size, 20 / 800 * size, "#D5D5D0"));
-  //grey,row 2, column 2
-  elementList.push(new element(45 / 800 * size, 100/ 800 * size, 15 / 800 * size, 20 / 800 * size, "#D5D5D0"));
-  //grey,row 5, column 2
-  elementList.push(new element(45 / 800 * size, 650/ 800 * size, 15 / 800 * size, 20 / 800 * size, "#D5D5D0"));
+ 
 
 
 
@@ -163,36 +277,7 @@ function creatElements() {
   for (let d = 0; d < column3.length; d++) {
     elementList.push(new element(92 / 800 * size, column3[d], 16 / 800 * size, 16 / 800 * size, "#A7392C"))
   }
-  elementList.push(new element(92 / 800 * size, 342 / 800 * size, 16 / 800 * size, 20 / 800 * size, "#A7392C"));
-  //blue,row 2, column 3
-  elementList.push(new element(92 / 800 * size, 122 / 800 * size, 20 / 800 * size, 20 / 800 * size, "#4468BC"));
-  elementList.push(new element(60 / 800 * size, 142 / 800 * size, 50 / 800 * size, 50 / 800 * size, "#4468BC"));
-  //blue,row 2, column 3
-  elementList.push(new element(92 / 800 * size, 260 / 800 * size, 10 / 800 * size, 10 / 800 * size, "#4468BC"));
-  //blue,row 3, column 3
-  elementList.push(new element(92 / 800 * size, 295 / 800 * size, 10 / 800 * size, 10 / 800 * size, "#4468BC"));
-  //blue,row 4, column 3
-  elementList.push(new element(92 / 800 * size, 400 / 800 * size, 10 / 800 * size, 10 / 800 * size, "#4468BC"));
-  //blue,row 5, column 3
-  elementList.push(new element(92 / 800 * size, 447 / 800 * size, 10/ 800 * size, 20 / 800 * size, "#4468BC"));
-  //blue,row 6, column 3
-  elementList.push(new element(92 / 800 * size, 500 / 800 * size, 10/ 800 * size, 20 / 800 * size, "#4468BC"));
-  elementList.push(new element(62 / 800 * size, 539 / 800 * size, 31 / 800 * size, 40 / 800 * size, "#4468BC"));
-  //blue,row 7, column 3
-  elementList.push(new element(92 / 800 * size, 635 / 800 * size, 10/ 800 * size, 10 / 800 * size, "#4468BC"));
-  elementList.push(new element(92 / 800 * size, 680 / 800 * size, 15/ 800 * size, 15 / 800 * size, "#4468BC"));
-  //blue,row 8, column 3
-  elementList.push(new element(92 / 800 * size, 700 / 800 * size, 10/ 800 * size, 10 / 800 * size, "#4468BC"));
-  //blue,row 9, column 3
-  elementList.push(new element(92 / 800 * size, 755 / 800 * size, 10/ 800 * size, 15 / 800 * size, "#4468BC"));
-  //blue,row 9, column 3
-  elementList.push(new element(92 / 800 * size, 680 / 800 * size, 17 / 800 * size, 17 / 800 * size, "#4468BC"));
-  //grey,row 5, column 3
-  elementList.push(new element(92 / 800 * size, 200/ 800 * size, 15 / 800 * size, 20 / 800 * size, "#D5D5D0"));
-  //grey,row 5, column 3
-  elementList.push(new element(92 / 800 * size, 370/ 800 * size, 15 / 800 * size, 20 / 800 * size, "#D5D5D0"));
-  //grey,row 5, column 3
-  elementList.push(new element(123/ 800 * size, 70/ 800 * size, 30 / 800 * size, 20 / 800 * size, "#D5D5D0"));
+  
   
   
 
@@ -217,28 +302,7 @@ function creatElements() {
   for (let p = 0; p < column5_y.length; p++) {
     elementList.push(new element(column5_x[p], column5_y[p], column5_w[p], column5_h[p], column5_col[p]))
   }
-  //grey,row 5, column 5
-  elementList.push(new element(376/ 800 * size, 122/ 800 * size, 30 / 800 * size, 20 / 800 * size, "#D5D5D0"));
-  //grey,row 5, column 5
-  elementList.push(new element(300/ 800 * size, 15/ 800 * size, 30 / 800 * size, 20 / 800 * size, "#D5D5D0"));
-  //grey,row 5, column 5
-  elementList.push(new element(175/ 800 * size, 15/ 800 * size, 20 / 800 * size, 20 / 800 * size, "#D5D5D0"));
-  //grey,row 5, column 5
-  elementList.push(new element(175/ 800 * size, 230/ 800 * size, 20 / 800 * size, 20 / 800 * size, "#D5D5D0"));
-  //grey,row 5, column 5
-  elementList.push(new element(175/ 800 * size, 320/ 800 * size, 20 / 800 * size, 20 / 800 * size, "#D5D5D0"));
-  //grey,row 5, column 5
-  elementList.push(new element(175/ 800 * size, 400/ 800 * size, 20 / 800 * size, 20 / 800 * size, "#D5D5D0"));
-  //grey,row 5, column 5
-  elementList.push(new element(175/ 800 * size, 500/ 800 * size, 20 / 800 * size, 20 / 800 * size, "#D5D5D0"));
-  //grey,row 5, column 5
-  elementList.push(new element(175/ 800 * size, 600/ 800 * size, 20 / 800 * size, 20 / 800 * size, "#D5D5D0"));
-  //grey,row 5, column 5
-  elementList.push(new element(260/ 800 * size, 680/ 800 * size, 20 / 800 * size, 20 / 800 * size, "#D5D5D0"));
-  //grey,row 5, column 5
-  elementList.push(new element(260/ 800 * size, 500/ 800 * size, 20 / 800 * size, 20 / 800 * size, "#D5D5D0"));
-  //grey,row 5, column 5
-  elementList.push(new element(260/ 800 * size, 400/ 800 * size, 20 / 800 * size, 20 / 800 * size, "#D5D5D0"));
+ 
   
   
 
@@ -254,24 +318,7 @@ function creatElements() {
     elementList.push(new element(429 / 800 * size, column6[e], 16 / 800 * size, 14 / 800 * size, "#A7392C"))
   }
   //blue,row 1, column 6
-  elementList.push(new element(180/ 800 * size, 65 / 800 * size, 15/ 800 * size, 15 / 800 * size, "#4468BC"));
-  elementList.push(new element(180/ 800 * size, 100 / 800 * size, 15/ 800 * size, 15 / 800 * size, "#4468BC"));
-  //blue,row 2, column 6
-  elementList.push(new element(180/ 800 * size, 150 / 800 * size, 15/ 800 * size, 15 / 800 * size, "#4468BC"));
-  //blue,row 2, column 6
-  elementList.push(new element(180/ 800 * size, 275 / 800 * size, 15/ 800 * size, 15 / 800 * size, "#4468BC"));
-  //blue,row 3, column 6
-  elementList.push(new element(180/ 800 * size, 275 / 800 * size, 15/ 800 * size, 15 / 800 * size, "#4468BC"));
-  //blue,row 4, column 6
-  elementList.push(new element(180/ 800 * size, 350/ 800 * size, 15/ 800 * size, 15 / 800 * size, "#4468BC"));
-  //blue,row 5, column 6
-  elementList.push(new element(180/ 800 * size, 450 / 800 * size, 15/ 800 * size, 15 / 800 * size, "#4468BC"));
-  //blue,row 7, column 6
-  elementList.push(new element(180/ 800 * size, 580 / 800 * size, 15/ 800 * size, 15 / 800 * size, "#4468BC"));
-  //blue,row 8, column 6
-  elementList.push(new element(180/ 800 * size, 685 / 800 * size, 15/ 800 * size, 15 / 800 * size, "#4468BC"));
-  //blue,row 9, column 6
-  elementList.push(new element(180/ 800 * size, 755 / 800 * size, 15/ 800 * size, 15 / 800 * size, "#4468BC"));
+ 
 
 
   // red rect row7
@@ -279,29 +326,7 @@ function creatElements() {
   for (let f = 0; f < row7.length; f++) {
     elementList.push(new element(462 / 800 * size, row7[f], 16 / 800 * size, 14 / 800 * size, "#A7392C"))
   }
-  elementList.push(new element(462 / 800 * size, 123 / 800 * size, 16 / 800 * size, 20 / 800 * size, "#A7392C"));
-  //blue,row 2, column 7
-  elementList.push(new element(200/ 800 * size, 123 / 800 * size, 15/ 800 * size, 15 / 800 * size, "#4468BC"));
-  //blue,row 3, column 7
-  elementList.push(new element(225/ 800 * size, 280 / 800 * size, 15/ 800 * size, 15 / 800 * size, "#4468BC"));
-  elementList.push(new element(385/ 800 * size, 280 / 800 * size, 15/ 800 * size, 15 / 800 * size, "#4468BC"));
-  //blu4,row 3, column 7
-  elementList.push(new element(385/ 800 * size, 345 / 800 * size, 15/ 800 * size, 15 / 800 * size, "#4468BC"));
-  //blue,row 7, column 7
-  elementList.push(new element(300/ 800 * size, 580 / 800 * size, 15/ 800 * size, 15 / 800 * size, "#4468BC"));
-  elementList.push(new element(370/ 800 * size, 580 / 800 * size, 15/ 800 * size, 15 / 800 * size, "#4468BC"));
-  //blue,row 8, column 7
-  elementList.push(new element(320/ 800 * size, 680 / 800 * size, 15/ 800 * size, 15 / 800 * size, "#4468BC"));
-  elementList.push(new element(365/ 800 * size, 680 / 800 * size, 15/ 800 * size, 15 / 800 * size, "#4468BC"));
-  //blue,row 9, column 7
-  elementList.push(new element(325/ 800 * size, 755 / 800 * size, 15/ 800 * size, 15 / 800 * size, "#4468BC"));
-  elementList.push(new element(345/ 800 * size, 755 / 800 * size, 15/ 800 * size, 15 / 800 * size, "#4468BC"));
-  //grey,row 5, column 5
-  elementList.push(new element(325/ 800 * size, 343/ 800 * size, 56 / 800 * size, 20 / 800 * size, "#D5D5D0"));
-  //grey,row 5, column 5
-  elementList.push(new element(325/ 800 * size, 379/ 800 * size, 56 / 800 * size, 50 / 800 * size, "#D5D5D0"));
-  //grey,row 5, column 5
-  elementList.push(new element(375/ 800 * size, 500/ 800 * size, 20 / 800 * size, 20 / 800 * size, "#D5D5D0"));
+ 
   // red rect column8
   let column8_x = [516 / 800 * size, 593 / 800 * size, 500 / 800 * size, 519 / 800 * size, 519 / 800 * size];
   let column8_y = [278 / 800 * size, 278 / 800 * size, 344 / 800 * size, 447 / 800 * size, 481 / 800 * size]
@@ -317,30 +342,7 @@ function creatElements() {
   for (let q = 0; q < column_8_y.length; q++) {
     elementList.push(new element(column_8_x[q], column_8_y[q], column_8_w[q], column_8_h[q], column_8_col[q]))
   }
-  //blue,row 2, column 8
-  elementList.push(new element(430 / 800 * size, 65 / 800 * size, 15 / 800 * size, 15 / 800 * size, "#4468BC"));
-  elementList.push(new element(430 / 800 * size, 125 / 800 * size, 15 / 800 * size, 15 / 800 * size, "#4468BC"));
-  elementList.push(new element(430 / 800 * size, 200/ 800 * size, 15 / 800 * size, 15 / 800 * size, "#4468BC"));
-  //blue,row 3, column 8
-  elementList.push(new element(430 / 800 * size, 300/ 800 * size, 15 / 800 * size, 15 / 800 * size, "#4468BC"));
-  //blue,row 6, column 8
-  elementList.push(new element(430 / 800 * size, 600/ 800 * size, 15 / 800 * size, 15 / 800 * size, "#4468BC"));
-  //blue,row 7, column 8
-  elementList.push(new element(430 / 800 * size, 681/ 800 * size, 15 / 800 * size, 15 / 800 * size, "#4468BC"));
-  //grey,row 5, column 5
-  elementList.push(new element(430/ 800 * size, 100/ 800 * size, 15 / 800 * size, 15 / 800 * size, "#D5D5D0"));
-  //grey,row 5, column 5
-  elementList.push(new element(430/ 800 * size, 30/ 800 * size, 15 / 800 * size, 15 / 800 * size, "#D5D5D0"));
-  //grey,row 5, column 5
-  elementList.push(new element(430/ 800 * size, 230/ 800 * size, 15 / 800 * size, 15 / 800 * size, "#D5D5D0"));
-  //grey,row 5, column 5
-  elementList.push(new element(430/ 800 * size, 345/ 800 * size, 15 / 800 * size, 15 / 800 * size, "#D5D5D0"));
-  //grey,row 5, column 5
-  elementList.push(new element(430/ 800 * size, 450/ 800 * size, 15 / 800 * size, 15 / 800 * size, "#D5D5D0"));
-  //grey,row 5, column 5
-  elementList.push(new element(430/ 800 * size, 500/ 800 * size, 15 / 800 * size, 15 / 800 * size, "#D5D5D0"));
-  //grey,row 5, column 5
-  elementList.push(new element(430/ 800 * size, 620/ 800 * size, 15 / 800 * size, 15 / 800 * size, "#D5D5D0"));
+ 
 
 
 
@@ -350,29 +352,7 @@ function creatElements() {
   for (let h = 0; h < column9_y.length; h++) {
     elementList.push(new element(672 / 800 * size, column9_y[h], 16, column9_h[h], "#A7392C"))
   }
-  elementList.push(new element(462 / 800 * size, 123 / 800 * size, 16 / 800 * size, 20 / 800 * size, "#A7392C"));
-  //blue,row 7, column 9
-  elementList.push(new element(463 / 800 * size, 600/ 800 * size, 15 / 800 * size, 15 / 800 * size, "#4468BC"));
-  //blue,row 6, column 9
-  elementList.push(new element(463 / 800 * size, 500/ 800 * size, 15 / 800 * size, 15 / 800 * size, "#4468BC"));
-  //blue,row 3, column 9
-  elementList.push(new element(463 / 800 * size, 300/ 800 * size, 15 / 800 * size, 15 / 800 * size, "#4468BC"));
-  //blue,row 2, column 9
-  elementList.push(new element(463 / 800 * size, 200/ 800 * size, 15 / 800 * size, 15 / 800 * size, "#4468BC"));
-  //grey,row 5, column 5
-  elementList.push(new element(463/ 800 * size, 150/ 800 * size, 15 / 800 * size, 15 / 800 * size, "#D5D5D0"));
-  //grey,row 5, column 5
-  elementList.push(new element(463/ 800 * size, 100/ 800 * size, 15 / 800 * size, 15 / 800 * size, "#D5D5D0"));
-  //grey,row 5, column 5
-  elementList.push(new element(463/ 800 * size, 30/ 800 * size, 15 / 800 * size, 15 / 800 * size, "#D5D5D0"));
-  //grey,row 5, column 5
-  elementList.push(new element(463/ 800 * size, 260/ 800 * size, 15 / 800 * size, 15 / 800 * size, "#D5D5D0"));
-  //grey,row 5, column 5
-  elementList.push(new element(463/ 800 * size, 350/ 800 * size, 15 / 800 * size, 15 / 800 * size, "#D5D5D0"));
-  //grey,row 5, column 5
-  elementList.push(new element(463/ 800 * size, 450/ 800 * size, 15 / 800 * size, 15 / 800 * size, "#D5D5D0"));
-  //grey,row 5, column 5
-  elementList.push(new element(463/ 800 * size, 560/ 800 * size, 15 / 800 * size, 15 / 800 * size, "#D5D5D0"));
+
 
   // red rect row10
   let row10_x = [702 / 800 * size, 702 / 800 * size, 702 / 800 * size, 702 / 800 * size, 689 / 800 * size, 687 / 800 * size, 687 / 800 * size, 722 / 800 * size, 720 / 800 * size];
@@ -383,56 +363,7 @@ function creatElements() {
   for (let r = 0; r < row10_y.length; r++) {
     elementList.push(new element(row10_x[r], row10_y[r], row10_w[r], row10_h[r], row10_col[r]))
   }
-  //blue,row 4, column 10
-  elementList.push(new element(560 / 800 * size, 345/ 800 * size, 15 / 800 * size, 20 / 800 * size, "#4468BC"));
-  //blue,row 6, column 10
-  elementList.push(new element(630 / 800 * size, 450/ 800 * size, 15 / 800 * size, 15 / 800 * size, "#4468BC"));
-  elementList.push(new element(545 / 800 * size, 450/ 800 * size, 15 / 800 * size, 15 / 800 * size, "#4468BC"));
-  //blue,row 7, column 10
-  elementList.push(new element(625 / 800 * size, 500/ 800 * size, 15 / 800 * size, 18 / 800 * size, "#4468BC"));
-  elementList.push(new element(520 / 800 * size, 500/ 800 * size, 20 / 800 * size, 18 / 800 * size, "#4468BC"));
-  //blue,row 7, column 10
-  elementList.push(new element(625 / 800 * size, 680/ 800 * size, 15 / 800 * size, 18 / 800 * size, "#4468BC"));
-  elementList.push(new element(520 / 800 * size, 680/ 800 * size, 15 / 800 * size, 15 / 800 * size, "#4468BC"));
-  //grey,row 5, column 5
-  elementList.push(new element(570/ 800 * size, 400/ 800 * size, 50 / 800 * size, 30 / 800 * size, "#D5D5D0"));
-  //grey,row 5, column 5
-  elementList.push(new element(570/ 800 * size, 447/ 800 * size, 50 / 800 * size, 20 / 800 * size, "#D5D5D0"));
-  //grey,row 5, column 5
-  elementList.push(new element(559/ 800 * size, 483/ 800 * size, 70 / 800 * size, 15/ 800 * size, "#D5D5D0"));
-  
 
-
-  // red rect row11
-
-  elementList.push(new element(740 / 800 * size, 346 / 800 * size, 16 / 800 * size, 16 / 800 * size, "#A7392C"));
-  elementList.push(new element(740 / 800 * size, 501 / 800 * size, 16 / 800 * size, 16 / 800 * size, "#A7392C"));
-  //blue,row 6, column 11
-  elementList.push(new element(740 / 800 * size, 300/ 800 * size, 15 / 800 * size, 15 / 800 * size, "#4468BC"));
-  //blue,row 7, column 11
-  elementList.push(new element(740 / 800 * size, 450/ 800 * size, 20 / 800 * size, 18 / 800 * size, "#4468BC"));
-  //blue,row 6, column 11
-  elementList.push(new element(685 / 800 * size, 460/ 800 * size, 50 / 800 * size, 40 / 800 * size, "#4468BC"));
-  //blue,row 1, column 11
-  elementList.push(new element(720 / 800 * size, 85/ 800 * size, 50 / 800 * size, 30 / 800 * size, "#4468BC"));
-  //blue,row 1, column 11
-  elementList.push(new element(735 / 800 * size, 640/ 800 * size, 15 / 800 * size, 15 / 800 * size, "#4468BC"));
-  //grey,row 5, column 5
-  elementList.push(new element(670/ 800 * size, 483/ 800 * size, 15 / 800 * size, 15/ 800 * size, "#D5D5D0"));
-  //grey,row 5, column 5
-  elementList.push(new element(670/ 800 * size, 150/ 800 * size, 15 / 800 * size, 15 / 800 * size, "#D5D5D0"));
-  //grey,row 5, column 5
-  elementList.push(new element(670/ 800 * size, 100/ 800 * size, 15 / 800 * size, 15 / 800 * size, "#D5D5D0"));
-  //grey,row 5, column 5
-  elementList.push(new element(670/ 800 * size, 30/ 800 * size, 15 / 800 * size, 15 / 800 * size, "#D5D5D0"));
-  //grey,row 5, column 5
-  elementList.push(new element(670/ 800 * size, 260/ 800 * size, 15 / 800 * size, 15 / 800 * size, "#D5D5D0"));
-  //grey,row 5, column 5
-  elementList.push(new element(670/ 800 * size, 230/ 800 * size, 15 / 800 * size, 15 / 800 * size, "#D5D5D0"));
-  //grey,row 5, column 5
-  elementList.push(new element(670/ 800 * size, 400/ 800 * size, 15 / 800 * size, 15 / 800 * size, "#D5D5D0"));
-  //grey,row 5, column 5
-  elementList.push(new element(670/ 800 * size, 600/ 800 * size, 15 / 800 * size, 15 / 800 * size, "#D5D5D0"));
 
 
   // red rect row12
@@ -442,16 +373,7 @@ function creatElements() {
     elementList.push(new element(768 / 800 * size, row12_y[j], 16 / 800 * size, row12_h[j], "#A7392C"))
   }
 
-  //red rect row13
-  elementList.push(new element(784 / 800 * size, 501 / 800 * size, 16 / 800 * size, 16 / 800 * size, "#A7392C"));
-  //grey,row 5, column 3
-  elementList.push(new element(92 / 800 * size, 200/ 800 * size, 15 / 800 * size, 50 / 800 * size, "#D5D5D0"));
-  //grey,row 5, column 3
-  elementList.push(new element(123/ 800 * size, 225/ 800 * size, 30 / 800 * size, 20 / 800 * size, "#D5D5D0"));
-  //grey,row 5, column 3
-  elementList.push(new element(128/ 800 * size, 310/ 800 * size, 30 / 800 * size, 20 / 800 * size, "#D5D5D0"));
-  //grey,row 5, column 3
-  elementList.push(new element(130/ 800 * size, 650/ 800 * size, 30 / 800 * size, 20 / 800 * size, "#D5D5D0"));
+
 }
  function windowResized() {
         resizeCanvas(windowWidth, windowHeight);
@@ -459,3 +381,4 @@ function creatElements() {
         elementList = [];
         creatElements();
     }
+
