@@ -1,8 +1,8 @@
 # 9103 TUT1 groupC
 
 // This is our group project
+
 // Individual works are in branches named with each member's name.
-<<<<<<< HEAD
 
 =======
 
