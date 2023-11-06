@@ -4,11 +4,7 @@ let size;
 let yoff = 0.0;
 let yh = 900;
 let xh = 1300;
-let interactiveNoise;
-let smokeVisible = true;
-let smoke2Visible = true;
-let smoke3Visible = true;
-let smoke4Visible = true;
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
   size = windowWidth < windowHeight ? windowWidth : windowHeight;
