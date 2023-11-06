@@ -168,7 +168,7 @@ function smokeHorizontal5() {
 function smokeVertical() {
   let mySmoke = new smokeStatus(0, 0, 500, 5, 50,10);
   for (let y = mySmoke.y; y < 1500; y += 10) {
-    for (let x = mySmoke.x; x < 300; x += 100) {
+    for (let x = mySmoke.x; x < 500; x += 100) {
       // Scale input coordinates.
       let nx = mySmoke.noiseScale * x;
       let ny = mySmoke.noiseScale * y;
