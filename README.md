@@ -1,4 +1,5 @@
-// Users will land on the page that looks like a 2D escape game map, with Perlin-generated strips representing the yellow strips and another Perlin noise-generated background representing the rising sea. The two strips will change color within a color limit, which will make it flash like it is a building.
+// Users will land on the page that looks like a 2D escape game map, with Perlin-generated strips representing the yellow strips and another Perlin noise-generated background representing the rising sea. User can click to make the horizontal gates invisible and make the wave rise faster.
+
 //Reference:
 “A gray cloudy pattern that changes.”
 https://p5js.org/reference/#/p5/noise

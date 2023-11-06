@@ -4,6 +4,7 @@ let size;
 let yoff = 0.0;
 let yh = 900;
 let xh = 1300;
+let smokeVisible = true;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -20,11 +21,13 @@ function draw() {
   // draw wave;
   wave();
   // draw smoke;
-  smokeHorizontal();
-  smokeHorizontal2();
-  smokeHorizontal3();
-  smokeHorizontal4();
-  smokeHorizontal5();
+  if (smokeVisible) {
+    smokeHorizontal();
+    smokeHorizontal2();
+    smokeHorizontal3();
+    smokeHorizontal4();
+    smokeHorizontal5();
+  }
   smokeVertical();
   smokeVertical2();
   smokeVertical3();
@@ -35,6 +38,9 @@ function draw() {
   //change xh and yh every frame to make it an animation 
   yh -= 1;
   xh -= 1;
+  if (mouseIsPressed) {
+    smokeVisible = false;
+  }
 }
 
 class smokeStatus {
@@ -227,6 +233,10 @@ function smokeVertical3() {
 }
 function wave() {
   background(51);
+  let s="click canvus to open the gate and make wave flow faster"
+  textSize(50);
+  fill(0, 230, 255);
+  text(s,windowWidth*0.5,windowHeight/2);
   //wave color
   fill(0, 230, 255);
   //draw a polygon out of the wave points
