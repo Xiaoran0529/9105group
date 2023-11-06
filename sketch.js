@@ -69,17 +69,31 @@ class element {
   constructor(x, y, width, height, color) {
     this.x = x;
     this.y = y;
-    this.height = height;
     this.width = width;
+    this.height = height;
     this.color = color;
+    // Assign random velocities for movement
+    this.vx = random(-2, 2);
+    this.vy = random(-2, 2);
   }
 
+  // Update the element's position and draw it
   display() {
+    this.x += this.vx;
+    this.y += this.vy;
+
+    // Keep the element within the bounds of the canvas
+    if (this.x + this.width > size || this.x < 0) {
+      this.vx *= -1; // Reverse direction when hitting the edge
+    }
+    if (this.y + this.height > size || this.y < 0) {
+      this.vy *= -1; // Reverse direction when hitting the edge
+    }
+
     fill(this.color);
     rect(this.x, this.y, this.width, this.height);
   }
 }
-
 
 
 function creat2Element(x, y, width, height, color) {
