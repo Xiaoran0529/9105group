@@ -1,2 +1,2 @@
 # 9105group
-// User will need to press mouse to make the gate invisible inorder to make the wave flow faster. It is aim to make the project as an 2d escape game map.  
+// User will need to press key 1-4 to make the gate invisible inorder to make the wave flow faster and press r to reload window. It is aim to make the project as an 2d escape game map. 

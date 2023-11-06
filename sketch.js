@@ -6,6 +6,9 @@ let yh = 900;
 let xh = 1300;
 let interactiveNoise;
 let smokeVisible = true;
+let smoke2Visible = true;
+let smoke3Visible = true;
+let smoke4Visible = true;
 function setup() {
   createCanvas(windowWidth, windowHeight);
   size = windowWidth < windowHeight ? windowWidth : windowHeight;
@@ -23,10 +26,23 @@ function draw() {
   // draw smoke;
   if (smokeVisible) {
     smoke();
+    //smoke2();
+    //smoke3();
+    //smoke4();
+  }
+  if (smoke2Visible) {
     smoke2();
+    //smoke3();
+    //smoke4();
+  }
+  if (smoke3Visible) {
     smoke3();
+    //smoke4();
+  }
+  if (smoke4Visible) {
     smoke4();
   }
+
 
 
 
@@ -37,11 +53,25 @@ function draw() {
   //change xh and yh every frame to make it an animation 
   yh -= 1;
   xh -= 1;
-  if (mouseIsPressed) {
-    smokeVisible = !smokeVisible;
-  }
 }
 
+function keyPressed(){
+  if (key==='1'){
+    smokeVisible = false;
+  }
+  else if (key==='2'){
+    smoke2Visible = false;
+  }
+  else if (key==='3'){
+    smoke3Visible = false;
+  }
+  else if (key==='4'){
+    smoke4Visible = false;
+  }
+  else if (key ==='r'){
+    location.reload();
+  }
+}
 class smokeStatus {
   constructor(x, y, noiseLevel, noiseScale, radius) {
     this.x = x;
@@ -146,10 +176,11 @@ function smoke4() {
 
 function drawBackground() {
   background(51);
-  let s = "click canvus to open the gate and make wave flow faster"
+  let s = "press number 1-4 to open the gate and make wave flow faster,\n press r to reload and start again"
   textSize(50);
   fill(0, 230, 255);
   text(s, windowWidth / 2, windowHeight / 2);
+  //wave color
   fill(0, 230, 255);
   //draw a polygon out of the wave points
   beginShape();
