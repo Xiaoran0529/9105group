@@ -24,8 +24,8 @@ function draw() {
   // draw wave;
   drawBackground();
   // draw smoke;
-  smoke6();
-  smoke7();
+  smokeVertical();
+  smokeHorizontal();
 
 
 
@@ -50,7 +50,7 @@ class smokeStatus {
   }
 
 }
-function smoke6() {
+function smokeVertical() {
   let mySmoke2 = new smokeStatus(0, 0, 500, 5, 5);
   for (let y = mySmoke2.y; y < 1500; y += 50) {
     for (let x = mySmoke2.x; x < 1550; x += 20) {
@@ -72,7 +72,7 @@ function smoke6() {
     }
   }
 }
-function smoke7() {
+function smokeHorizontal() {
   let mySmoke2 = new smokeStatus(0, 0, 500, 5, 3);
   for (let y = mySmoke2.y; y < 1500; y += 10) {
     for (let x = mySmoke2.x; x < 1550; x += 50) {
