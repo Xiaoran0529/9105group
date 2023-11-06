@@ -24,15 +24,9 @@ function draw() {
   // draw wave;
   drawBackground();
   // draw smoke;
-  //smoke();
-  //smoke2();
-  //smoke3();
-  //smoke4();
-  //smoke5();
   smoke6();
   smoke7();
-  //smoke8();
-  //smoke9();
+
 
 
 
@@ -56,77 +50,10 @@ class smokeStatus {
   }
 
 }
-
-function smoke() {
-  let mySmoke = new smokeStatus(355, 270, 300, 1, 5);
-  for (let y = mySmoke.y; y < 550; y += 20) {
-    for (let x = mySmoke.x; x < 820; x += 15) {
-      // Scale input coordinates.
-      let nx = mySmoke.noiseScale * x;
-      let ny = mySmoke.noiseScale * y;
-      // Compute noise value.
-      let nt = mySmoke.noiseScale * frameCount;
-      // Compute noise value.
-      let c = mySmoke.noiseLevel * noise(nx, ny, nt);
-      // Render.
-      stroke(c);
-      point(x, y);
-      stroke(225, c, 0);
-      let circleX = x;
-      let circleY = y;
-      noFill();
-      ellipse(circleX, circleY, mySmoke.radius * 5, mySmoke.radius * 5)
-    }
-  }
-}
-function smoke5() {
-  let mySmoke = new smokeStatus(655, 70, 300, 1, 5);
-  for (let y = mySmoke.y; y < 250; y += 5) {
-    for (let x = mySmoke.x; x < 800; x += 5) {
-      // Scale input coordinates.
-      let nx = mySmoke.noiseScale * x;
-      let ny = mySmoke.noiseScale * y;
-      // Compute noise value.
-      let nt = mySmoke.noiseScale * frameCount;
-      // Compute noise value.
-      let c = mySmoke.noiseLevel * noise(nx, ny, nt);
-      // Render.
-      stroke(c);
-      point(x, y);
-      stroke(225, c, 0);
-      let circleX = x;
-      let circleY = y;
-      noFill();
-      ellipse(circleX, circleY, mySmoke.radius * 5, mySmoke.radius * 5)
-    }
-  }
-}
-function smoke2() {
-  let mySmoke2 = new smokeStatus(900, 70, 500, 5, 3);
-  for (let y = mySmoke2.y; y < 230; y += 30) {
-    for (let x = mySmoke2.x; x < 1270; x += 50) {
-      // Scale input coordinates.
-      let nx = mySmoke2.noiseScale * x;
-      let ny = mySmoke2.noiseScale * y;
-      // Compute noise value.
-      let nt = mySmoke2.noiseScale * frameCount;
-      // Compute noise value.
-      let c = mySmoke2.noiseLevel * noise(nx, ny, nt);
-      // Render.
-      stroke(c);
-      point(x, y);
-      stroke(100, c, 100);
-      let circleX = x;
-      let circleY = y;
-      noFill();
-      ellipse(circleX, circleY, mySmoke2.radius * 5, mySmoke2.radius * 5)
-    }
-  }
-}
 function smoke6() {
-  let mySmoke2 = new smokeStatus(0, 0, 200, 5, 3);
+  let mySmoke2 = new smokeStatus(0, 0, 500, 5, 5);
   for (let y = mySmoke2.y; y < 1500; y += 50) {
-    for (let x = mySmoke2.x; x < 1550; x += 10) {
+    for (let x = mySmoke2.x; x < 1550; x += 20) {
       // Scale input coordinates.
       let nx = mySmoke2.noiseScale * x;
       let ny = mySmoke2.noiseScale * y;
@@ -137,7 +64,7 @@ function smoke6() {
       // Render.
       stroke(c);
       point(x, y);
-      stroke(255, c, 255);
+      stroke(255, 0, 0);
       let circleX = x;
       let circleY = y;
       noFill();
@@ -146,7 +73,7 @@ function smoke6() {
   }
 }
 function smoke7() {
-  let mySmoke2 = new smokeStatus(0, 0, 200, 5, 3);
+  let mySmoke2 = new smokeStatus(0, 0, 500, 5, 3);
   for (let y = mySmoke2.y; y < 1500; y += 10) {
     for (let x = mySmoke2.x; x < 1550; x += 50) {
       // Scale input coordinates.
@@ -159,7 +86,7 @@ function smoke7() {
       // Render.
       stroke(c);
       point(x, y);
-      stroke(255, 255, 0);
+      stroke(c, c, 0);
       let circleX = x;
       let circleY = y;
       noFill();
